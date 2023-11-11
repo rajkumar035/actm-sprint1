@@ -1,0 +1,135 @@
+.homepage {
+  background: url(../../assets/images/homebg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  padding: 0px;
+  margin: 0px;
+}
+
+.homepage__layout {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100vh;
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.moraltext {
+  margin: auto;
+  width: 70%;
+  text-align: center;
+}
+
+.moraltext h1 {
+  margin: 0px;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 65px;
+  color: #fff;
+  font-family: "Arbutus Slab", serif;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+
+.moraltext button {
+  border-color: #fff;
+  color: #fff;
+}
+
+/* Header */
+
+.header {
+  width: 100vw;
+  padding: 12px 0px;
+  margin: 0px;
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  position: fixed;
+  align-items: center;
+}
+
+.header button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #fff;
+  height: 25px;
+  letter-spacing: 0.04em;
+  width: auto;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+
+.header img {
+  height: 90px;
+  width: 90px;
+  object-fit: contain;
+}
+
+.header__actions {
+  position: absolute;
+  right: 5px;
+}
+
+.header__actions > div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #fff;
+}
+
+.header__actions button {
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  font-size: 14px;
+}
+
+/* Footer */
+
+.contact__list {
+  display: flex;
+  justify-content: end;
+  gap: 0px;
+}
+
+.contact__list img {
+  height: 22px;
+  width: 22px;
+}
+
+/* Media Screen */
+
+/* 1000px */
+
+@media screen and (max-width: 1000px) {
+  .moraltext {
+    width: 94%;
+  }
+  .moraltext h1 {
+    font-size: 30px;
+    line-height: 55px;
+  }
+}
+
+/* 500px */
+
+@media screen and (max-width: 500px) {
+  .moraltext {
+    width: 94%;
+  }
+  .moraltext h1 {
+    font-size: 24px;
+    line-height: 45px;
+  }
+  .contact__list {
+    justify-content: center;
+  }
+  .moraltext button {
+    padding: 8px 30px;
+    font-size: small;
+  }
+}

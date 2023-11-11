@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Arbutus+Slab&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  background: #000;
+}
+
+.btn--outlined {
+  background: none;
+  border: 1px solid;
+  font-family: "Poppins";
+  font-size: 18px;
+  font-weight: 400;
+  padding: 12px 40px;
+  letter-spacing: 0.06em;
+}
+
+.btn--text {
+  background: none;
+  border: none;
+  font-family: "Poppins";
+  padding: 12px 30px;
+  letter-spacing: 0.06em;
+}
