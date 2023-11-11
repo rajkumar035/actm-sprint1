@@ -52,6 +52,12 @@ const Header = () => {
 };
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
+
   return (
     <section className="homepage">
       <Header />
@@ -61,7 +67,14 @@ const Home = () => {
         </div>
         <div className="moraltext">
           <h1>Inspiring Medical Pioneers to Shape the Future of Healthcare </h1>
-          <button className="btn--outlined">Join Now</button>
+          <button
+            className="btn--outlined"
+            onClick={() => {
+              handleNavigation("/missions");
+            }}
+          >
+            Join Now
+          </button>
         </div>
         <div className="contact__list">
           <button className="btn--text">

@@ -1,0 +1,147 @@
+.missionvission {
+  margin: 0px;
+  font-family: "Poppins", sans-serif;
+  background: #f7f7f7;
+}
+.missioncontainer {
+  padding: 40px 40px;
+}
+
+.missioncontainer__header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.missioncontainer h5 {
+  font-size: 30px;
+  color: #000;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  margin: 0px;
+  padding: 0px;
+}
+
+.missioncontainer .divider {
+  width: 75px;
+  margin: 10px auto;
+}
+
+.missioncontainer p {
+  margin: 20px 0px;
+  font-size: 16px;
+  color: #000;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 30px;
+}
+
+.missioncontainer__content__holder {
+  margin: 20px 100px;
+}
+
+.missioncontainer__content {
+  position: relative;
+  border: 1px solid transparent;
+  width: 100%;
+}
+
+.missioncontainer__content > div {
+  position: absolute;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  height: 60px;
+  width: 60px;
+}
+
+.missioncontainer__content div > img {
+  height: 35px;
+  width: 35px;
+  margin: 12px;
+}
+
+.missioncontainer__content > h6 {
+  border-radius: 10px;
+  padding: 20px;
+  margin: 30px;
+  font-size: 16px;
+  background: #edeaea;
+  color: #000;
+  font-weight: 600;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  letter-spacing: 0.04em;
+  line-height: 25px;
+  font-style: italic;
+}
+
+@media screen and (max-width: 1200px) {
+  .missioncontainer__content__holder {
+    margin: 20px;
+  }
+  .missioncontainer__content > div {
+    border-radius: 27px;
+    height: 55px;
+    width: 55px;
+  }
+  .missioncontainer__content div > img {
+    height: 30px;
+    width: 30px;
+    margin: 12px;
+  }
+  .missioncontainer__content > h6 {
+    font-size: 15px;
+  }
+}
+
+.vissioncontainer {
+  background: #8cad78;
+  padding: 60px;
+  color: #fff;
+}
+
+.vissioncontainer h6 {
+  font-size: 24px;
+  font-weight: 300;
+  margin: 10px 0px;
+}
+
+.footercontainer {
+  display: flex;
+  justify-content: end;
+  padding: 0px 40px;
+}
+
+.footercontainer div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.footercontainer div h6 {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.footercontainer img {
+  height: 24px;
+  width: auto;
+}
+
+@media screen and (max-width: 700px) {
+  .missioncontainer {
+    padding: 40px 20px;
+  }
+  .missioncontainer__content__holder {
+    margin: 20px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .missioncontainer {
+    padding: 40px 10px;
+  }
+  .missioncontainer__content__holder {
+    margin: 10px;
+  }
+}
