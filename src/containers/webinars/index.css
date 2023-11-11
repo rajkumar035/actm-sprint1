@@ -1,0 +1,149 @@
+.webinarContainer {
+  margin: 0px;
+  padding: 50px;
+  font-family: "Poppins", sans-serif;
+}
+
+.webinarContainer__header h6 {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin: 0px;
+}
+
+.webinarContainer__header div {
+  width: 40px;
+  margin: 25px 0px;
+}
+
+.webinarContainer__header p {
+  letter-spacing: 0.06em;
+  line-height: 30px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  font-size: 16px;
+}
+
+.webinarContainer_cards {
+  margin: 30px 0px;
+}
+
+.webinarcard {
+  width: 100%;
+  color: #000;
+  background: #fff;
+  border-radius: 0px 0px 10px 10px;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.webinarcard img {
+  width: 100%;
+  border-radius: 10px 10px 0px 0px;
+  object-fit: cover;
+  padding: 0px;
+  height: 260px;
+  margin: 0px;
+}
+
+.webinarcard__content {
+  padding: 35px;
+  margin: 0px;
+  background: #fff;
+  margin: 0px;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.webinarcard__content h6 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0px;
+  padding: 0px;
+}
+
+.webinarcard__content .divider {
+  width: 60px;
+  margin: 25px 0px;
+}
+
+.webinarcard_specifications {
+  margin: 30px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 30px;
+}
+
+.webinarcard_specifications div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 12px 0px;
+}
+
+.webinarcard_specifications div img {
+  height: 20px;
+  width: 20px;
+  object-fit: contain;
+  color: #000;
+}
+
+.webinarcard_specifications div h6 {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0px;
+  margin: 0px;
+}
+
+.webinarcard_description {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0.02em;
+}
+
+.webinarcard button {
+  margin-top: 15px;
+  border-radius: 10px;
+  background: #8cad78;
+  color: #fff;
+  border-color: transparent;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+  padding: 10px 40px;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+}
+
+@media screen and (max-width: 1000px) {
+  .webinarcard__content {
+    padding: 25px;
+  }
+  .webinarcard__content h6 {
+    font-size: 18px;
+  }
+  .webinarcard__content .divider {
+    margin: 20px 0px;
+  }
+  .webinarcard_specifications div {
+    margin: 6px 0px;
+  }
+  .webinarcard_description {
+    font-size: 14px;
+    line-height: 26px;
+    letter-spacing: 0.02em;
+  }
+  .webinarcard button {
+    font-weight: 500;
+    padding: 10px 40px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .webinarContainer {
+    padding: 50px 20px;
+  }
+}

@@ -5,7 +5,7 @@ body {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
-  background: #000;
+  background: #f7f7f7;
 }
 
 .btn--outlined {
@@ -24,4 +24,45 @@ body {
   font-family: "Poppins";
   padding: 12px 30px;
   letter-spacing: 0.06em;
+}
+
+.divider {
+  height: 5px;
+  background: #8cad78;
+}
+
+.dividerv2 {
+  height: 5px;
+  background: #fff;
+}
+
+.suspenseLoader {
+  width: 100vw;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 40px auto 0px auto;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 1000px) {
+  .btn--outlined {
+    font-size: 14px;
+    padding: 8px 30px;
+  }
 }

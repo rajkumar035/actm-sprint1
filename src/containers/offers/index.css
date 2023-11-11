@@ -1,0 +1,131 @@
+.offercontainer {
+  background-color: #8cad78;
+  height: 40vh;
+  margin: 0px;
+  font-family: "Poppins", sans-serif;
+  padding: 75px 40px;
+}
+
+.offercontainer__header {
+  text-align: center;
+}
+
+.offercontainer h5 {
+  font-size: 32px;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  margin: 0px;
+  padding: 0px;
+}
+
+.offercontainer p {
+  margin: 20px 0px;
+  font-size: 18px;
+  color: #fff;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  line-height: 30px;
+}
+
+.offerCard {
+  position: relative;
+  background: #edeaea;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.15);
+  height: 380px;
+  color: #000;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.offerCard__icon {
+  width: 100px;
+  height: 100px;
+  box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.12) inset;
+  border-radius: 50px;
+  margin-bottom: 10px;
+  background-color: rgba(140, 173, 120, 0.4);
+}
+
+.offerCard__icon img {
+  height: 65px;
+  width: 65px;
+  text-align: center;
+  padding: 16px;
+}
+
+.offerCard__content {
+  margin: 8px 0px;
+}
+
+.offerCard h6 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 6px 0px;
+}
+
+.offerCard p {
+  font-size: 15px;
+  font-weight: 500;
+  color: #000;
+  line-height: 25px;
+}
+
+.offerCard button {
+  border: 2px solid #000;
+  color: #000;
+  width: 100%;
+  background: none;
+  padding: 10px 0px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.offerCard button:hover {
+  background: #000;
+  color: #fff;
+  transition: ease-in-out 0.45s;
+}
+
+.offercardcontainer__cards {
+  margin: 40px auto;
+}
+
+@media screen and (max-width: 500px) {
+  .offerCard__icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+  }
+  .offerCard__icon img {
+    height: 50px;
+    width: 50px;
+    padding: 14px;
+  }
+  .offerCard__content {
+    margin: 4px 0px;
+  }
+  .offerCard h6 {
+    font-size: 18px;
+  }
+  .offerCard p {
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0.02em;
+  }
+  .offerCard button {
+    padding: 8px 0px;
+    font-size: 14px;
+  }
+  .offercontainer {
+    padding: 75px 20px;
+  }
+  .offerCard {
+    height: 300px;
+    padding: 25px;
+  }
+}

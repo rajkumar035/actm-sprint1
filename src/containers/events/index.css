@@ -1,0 +1,147 @@
+.eventscontainer {
+  margin: 0px;
+  padding: 50px;
+  font-family: "Poppins", sans-serif;
+}
+
+.eventsContainer__header h6 {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin: 0px;
+}
+
+.eventsContainer__header div {
+  width: 40px;
+  margin: 25px 0px;
+}
+
+.eventsContainer__header p {
+  letter-spacing: 0.06em;
+  line-height: 30px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  font-size: 16px;
+}
+
+.eventsContainer_cards {
+  margin: 30px 0px;
+}
+
+.eventcard {
+  width: 100%;
+  color: #fff;
+  background: #8cad78;
+  border-radius: 10px;
+}
+
+.eventcard img {
+  width: 100%;
+  border-radius: 10px 10px 0px 0px;
+  object-fit: cover;
+  height: 220px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.eventcard__content {
+  padding: 35px;
+  margin: 0px;
+  border-radius: 0px 0px 10px 10px;
+  background: #8cad78;
+  margin: 0px;
+}
+
+.eventcard__content h6 {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0px;
+  padding: 0px;
+}
+
+.eventcard__content .dividerv2 {
+  width: 60px;
+  margin: 25px 0px;
+}
+
+.eventcard_specifications {
+  margin: 30px 0px;
+}
+
+.eventcard_specifications div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 16px 0px;
+}
+
+.eventcard_specifications div img {
+  height: 20px;
+  width: 20px;
+  object-fit: contain;
+}
+
+.eventcard_specifications div h6 {
+  font-size: 14px;
+  font-weight: 400;
+  padding: 0px;
+  margin: 0px;
+}
+
+.eventcard_description {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0.02em;
+}
+
+.eventcard button {
+  margin-top: 15px;
+  width: 100%;
+  border-radius: 10px;
+  background: #fff;
+  color: #000;
+  border-color: transparent;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+  padding: 15px 0px;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+}
+
+.eventcard button:hover {
+  background: none;
+  border: 2px solid #fff;
+  color: #fff;
+  transition-duration: 0.4s;
+}
+
+@media screen and (max-width: 1000px) {
+  .eventcard__content {
+    padding: 20px;
+  }
+  .eventcard__content h6 {
+    font-size: 18px;
+  }
+  .eventcard__content .dividerv2 {
+    margin: 20px 0px;
+  }
+  .eventcard_specifications div {
+    margin: 12px 0px;
+  }
+  .eventcard_description {
+    font-size: 14px;
+    line-height: 24px;
+  }
+  .eventcard button {
+    padding: 12px 0px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .eventscontainer {
+    padding: 50px 20px;
+  }
+}
