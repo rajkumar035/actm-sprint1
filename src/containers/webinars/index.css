@@ -117,6 +117,14 @@
   font-family: "Poppins", sans-serif;
 }
 
+.btn--link {
+  border: none;
+  background: none;
+  color: blue;
+  font-size: 10px;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 1000px) {
   .webinarcard__content {
     padding: 25px;

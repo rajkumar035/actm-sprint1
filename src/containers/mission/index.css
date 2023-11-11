@@ -108,7 +108,7 @@
 
 .footercontainer {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   padding: 0px 40px;
 }
 

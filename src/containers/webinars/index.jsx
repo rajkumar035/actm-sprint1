@@ -22,7 +22,7 @@ const WebinarCard = (props) => {
         {isDescriptionOverflow ? (
           <div className="webinarcard_description">
             {customDescription}
-            <a href="#">more...</a>
+            <button className="btn--link">more...</button>
           </div>
         ) : (
           <div className="webinarcard_description">{description}</div>
