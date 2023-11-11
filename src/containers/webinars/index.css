@@ -117,9 +117,9 @@
   font-family: "Poppins", sans-serif;
 }
 
-.btn--link {
+.webinarcard_description .btn--link {
   border: none;
-  background: none;
+  background: none !important;
   color: blue;
   font-size: 10px;
   cursor: pointer;
