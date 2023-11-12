@@ -5,7 +5,7 @@ import sample from "../../assets/images/sample.png";
 import speakerico from "../../assets/svg/speaker.svg";
 import timeico from "../../assets/svg/timeblack.svg";
 import dateico from "../../assets/svg/dateblack.svg";
-import { Pagination } from "@mui/material";
+import AppPagination from "../../components/Pagination";
 
 const WebinarCard = (props) => {
   const { img, header, speaker, time, date, description } = props;
@@ -104,9 +104,7 @@ const Webinars = () => {
           })}
         </Grid>
       </div>
-      <div className="pagination">
-        <Pagination color="secondary" count={10} sx={{ color: "#8cad78" }} />
-      </div>
+      <AppPagination />
     </section>
   );
 };

@@ -5,7 +5,7 @@ import sample from "../../assets/images/sample.png";
 import locationico from "../../assets/svg/location.svg";
 import timeico from "../../assets/svg/time.svg";
 import dateico from "../../assets/svg/date.svg";
-import { Pagination } from "@mui/material";
+import AppPagination from "../../components/Pagination";
 
 const EventCard = (props) => {
   const { img, header, location, time, date, description } = props;
@@ -93,9 +93,7 @@ const Events = () => {
           })}
         </Grid>
       </div>
-      <div className="pagination">
-        <Pagination color="secondary" count={10} sx={{ color: "#8cad78" }} />
-      </div>
+      <AppPagination />
     </section>
   );
 };

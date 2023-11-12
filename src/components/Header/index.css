@@ -1,0 +1,147 @@
+nav {
+  width: 100%;
+  background-color: #1b1b1b;
+  transition: all 0.4s ease;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.brand {
+  height: 90px;
+  width: 90px;
+  padding: 15px 40px;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+nav ul li {
+  display: inline-block;
+}
+nav ul li a {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #fff;
+  border-radius: 4px;
+  height: 25px;
+  padding: 4px 20px;
+  font-weight: 400;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  width: auto;
+  font-family: "Poppins", sans-serif;
+  transition: 0.3s ease-in-out;
+}
+nav ul li a:hover {
+  background: #fff;
+  color: #000;
+}
+.checkbtn {
+  float: right;
+  font-size: 3rem;
+  color: #ffffff;
+  cursor: pointer;
+  display: none;
+}
+#check {
+  display: none;
+}
+.header__useractions {
+  color: #fff;
+  display: flex;
+  gap: 10px;
+  padding: 0px 30px;
+  align-items: center;
+}
+.header__useractions > a {
+  padding: 0px 5px;
+}
+nav img {
+  height: 50px;
+  padding: 20px 40px;
+  width: auto;
+}
+.close {
+  display: flex;
+  justify-content: flex-end !important;
+}
+@media (max-width: 1400px) {
+  .brand {
+    height: 70px;
+    width: 70px;
+  }
+  nav ul {
+    gap: 16px;
+  }
+  nav ul li a {
+    font-size: 14px;
+    padding: 4px 18px;
+  }
+  .header__useractions > a {
+    padding: 0px 6px;
+  }
+}
+@media (max-width: 1000px) {
+  nav {
+    background: transparent;
+  }
+  .brand {
+    height: 70px;
+    width: 70px;
+  }
+  .checkbtn {
+    display: block;
+    padding: 10px;
+  }
+  ul {
+    position: fixed;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    left: -100%;
+    top: 0%;
+    justify-content: center;
+    transition: all 0.4s ease;
+    padding: 0rem;
+  }
+  nav ul li a {
+    font-size: 1.5rem;
+  }
+  nav ul li a:hover {
+    color: #ffffff;
+    background: #1b1b1b;
+  }
+  #check:checked ~ ul {
+    left: 0%;
+  }
+}
+@media (max-width: 600px) {
+  nav {
+    height: 5rem;
+  }
+  .brand {
+    height: 1.8rem;
+    width: auto;
+    margin: 1.5rem 0rem 0rem 0rem;
+  }
+  .checkbtn {
+    float: right;
+    font-size: 1.8rem;
+    margin: 0rem 0rem;
+    padding: 1.5rem 0rem 0rem 0rem;
+  }
+  nav ul li a {
+    font-size: 1.2rem;
+  }
+}

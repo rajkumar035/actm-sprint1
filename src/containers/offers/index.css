@@ -1,6 +1,6 @@
 .offercontainer {
-  background-color: #8cad78;
-  height: 40vh;
+  height: max-content;
+  background: linear-gradient(to bottom, rgba(140, 173, 120, 1) 50%, #f7f7f7 40%);
   margin: 0px;
   font-family: "Poppins", sans-serif;
   padding: 75px 40px;

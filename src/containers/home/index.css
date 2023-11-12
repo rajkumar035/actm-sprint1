@@ -39,57 +39,6 @@
   color: #fff;
 }
 
-/* Header */
-
-.header {
-  width: 100vw;
-  padding: 12px 0px;
-  margin: 0px;
-  display: flex;
-  justify-content: center;
-  gap: 80px;
-  position: fixed;
-  align-items: center;
-}
-
-.header button {
-  background: none;
-  border: none;
-  font-size: 16px;
-  color: #fff;
-  height: 25px;
-  letter-spacing: 0.04em;
-  width: auto;
-  font-family: "Poppins", sans-serif;
-  cursor: pointer;
-}
-
-.header img {
-  height: 90px;
-  width: 90px;
-  object-fit: contain;
-}
-
-.header__actions {
-  display: flex;
-  justify-content: flex-end;
-  color: #fff;
-  padding: 16px;
-}
-
-.header__actions button {
-  background: none;
-  border: none;
-  color: #fff;
-  height: 25px;
-  letter-spacing: 0.02em;
-  width: auto;
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  letter-spacing: 0.06em;
-  font-size: 14px;
-}
-
 /* Footer */
 
 .contact__list {
@@ -103,37 +52,13 @@
   width: 22px;
 }
 
-/* Media Screen */
-
-@media screen and (max-width: 1100px) {
-  .header {
-    gap: 60px;
-  }
-}
-
-/* 1000px */
-
 @media screen and (max-width: 1000px) {
-  .header {
-    gap: 40px;
-    padding: 34px 0px;
-  }
   .moraltext {
     width: 94%;
-  }
-  .header img {
-    height: 70px;
-    width: 70px;
   }
   .moraltext h1 {
     font-size: 30px;
     line-height: 55px;
-  }
-  .header button {
-    font-size: 13px;
-  }
-  .header__actions button {
-    font-size: 13px;
   }
 }
 
