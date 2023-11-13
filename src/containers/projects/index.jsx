@@ -21,7 +21,7 @@ const ProjectCard = (props) => {
   );
 };
 
-const Projects = () => {
+const Projects = ({ id }) => {
   const boiler = [
     {
       id: 1,
@@ -50,7 +50,7 @@ const Projects = () => {
     },
   ];
   return (
-    <section className="projectscontainer">
+    <section id={id} className="projectscontainer">
       <div className="projectsContainer__header">
         <h6>All Projects</h6>
         <div className="divider" />

@@ -39,6 +39,14 @@
   color: #fff;
 }
 
+.moraltext button:hover {
+  border-color: transparent;
+  color: #000;
+  background: #fff;
+  transition: all 0.4s ease-in-out;
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 7px 29px 0px;
+}
+
 /* Footer */
 
 .contact__list {

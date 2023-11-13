@@ -7,18 +7,22 @@ import Projects from "./containers/projects";
 import Offers from "./containers/offers";
 import Mission from "./containers/mission";
 import Header from "./components/Header";
+import CssAnimations from "./utils/animations";
 
 function App() {
+  window.addEventListener("mousemove", CssAnimations.customCursorOnMOuseMoveMethod);
   return (
     <article>
+      <span className="cursor" />
+      <span className="cursor2" />
       <Header />
-      <Home />
-      <About />
-      <Event />
-      <Webinars />
-      <Projects />
-      <Offers />
-      <Mission />
+      <Home id={"home"} />
+      <About id={"about"} />
+      <Event id={"events"} />
+      <Webinars id={"webinars"} />
+      <Projects id={"projects"} />
+      <Offers id={"offers"} />
+      <Mission id={"missions"} />
     </article>
   );
 }

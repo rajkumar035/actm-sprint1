@@ -5,19 +5,23 @@ import linkedIn from "../../assets/svg/linkedin.svg";
 import twitter from "../../assets/svg/twitter.svg";
 import facebook from "../../assets/svg/facebook.svg";
 import { useNavigate } from "react-router-dom";
+import CssAnimations from "../../utils/animations";
 
-const Home = () => {
+const Home = ({ id }) => {
   const navigate = useNavigate();
 
   const handleNavigation = (path) => {
     navigate(path);
   };
+  const text = "Inspiring Medical Pioneers to Shape the Future of Healthcare";
+  const myArray = [...text];
+  CssAnimations.typewritingAnimation(".typeText", myArray);
 
   return (
-    <section className="homepage">
+    <section id={id} className="homepage">
       <div className="homepage__layout">
-        <div className="moraltext">
-          <h1>Inspiring Medical Pioneers to Shape the Future of Healthcare </h1>
+        <div class="moraltext">
+          <h1 className="typeText">|</h1>
           <button
             className="btn--outlined"
             onClick={() => {

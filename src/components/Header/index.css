@@ -1,36 +1,41 @@
-nav {
+#header {
   width: 100%;
-  background-color: #1b1b1b;
   transition: all 0.4s ease;
-  background: rgba(0, 0, 0, 0.5);
+  background: transparent;
   z-index: 999;
   position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.brand {
-  height: 90px;
-  width: 90px;
-  padding: 15px 40px;
+#header.dark__header {
+  background: rgba(0, 0, 0, 0.5);
 }
-nav ul {
+.navbar__content__container {
   list-style: none;
   display: flex;
   align-items: center;
   gap: 30px;
+  color: #fff;
+  padding: 0px 30px;
 }
-nav ul li {
+.navbar__content__container .navbar__contents {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+.navbar__contents__list {
   display: inline-block;
 }
-nav ul li a {
+.navbar__contents__value {
   background: none;
   border: none;
   font-size: 16px;
   color: #fff;
   border-radius: 4px;
   height: 25px;
-  padding: 4px 20px;
+  padding: 2px 6px;
   font-weight: 400;
   text-decoration: none;
   letter-spacing: 0.04em;
@@ -38,13 +43,18 @@ nav ul li a {
   font-family: "Poppins", sans-serif;
   transition: 0.3s ease-in-out;
 }
-nav ul li a:hover {
+.nav__divider {
+  background: rgba(255, 255, 255, 0.5);
+  height: 2px;
+  width: 100%;
+}
+.navbar__contents__value:hover {
   background: #fff;
   color: #000;
 }
 .checkbtn {
   float: right;
-  font-size: 3rem;
+  font-size: 18px;
   color: #ffffff;
   cursor: pointer;
   display: none;
@@ -52,18 +62,8 @@ nav ul li a:hover {
 #check {
   display: none;
 }
-.header__useractions {
-  color: #fff;
-  display: flex;
-  gap: 10px;
-  padding: 0px 30px;
-  align-items: center;
-}
-.header__useractions > a {
-  padding: 0px 5px;
-}
-nav img {
-  height: 50px;
+.brand {
+  height: 80px;
   padding: 20px 40px;
   width: auto;
 }
@@ -76,72 +76,81 @@ nav img {
     height: 70px;
     width: 70px;
   }
-  nav ul {
+  .navbar__content__container {
     gap: 16px;
   }
-  nav ul li a {
-    font-size: 14px;
-    padding: 4px 18px;
-  }
-  .header__useractions > a {
+  .navbar__contents__value {
     padding: 0px 6px;
+    font-size: 14px;
   }
 }
 @media (max-width: 1000px) {
-  nav {
-    background: transparent;
+  .navbar__content__container {
+    display: flex;
+    flex-direction: column;
+    align-items: normal;
+  }
+  #header img {
+    height: 40px;
+    padding: 15px;
+    width: auto;
   }
   .brand {
-    height: 70px;
-    width: 70px;
+    height: 60px;
+    width: 60px;
+    padding: 15px 20px;
   }
   .checkbtn {
     display: block;
     padding: 10px;
+    right: 0;
   }
-  ul {
+  .navbar__content__container {
     position: fixed;
     margin: 0px;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(34, 36, 33, 0.8);
+    gap: 50px;
+    height: 100vh;
+    left: -100%;
+    top: 0%;
+    transition: all 0.3s ease;
+    padding: 0px;
+  }
+  .navbar__contents {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 50px;
-    left: -100%;
-    top: 0%;
+    gap: 30px;
     justify-content: center;
-    transition: all 0.4s ease;
-    padding: 0rem;
+    margin: auto 0px;
   }
-  nav ul li a {
-    font-size: 1.5rem;
+
+  .navbar__contents__value {
+    font-size: 20px;
+    padding: 5px 10px;
   }
-  nav ul li a:hover {
-    color: #ffffff;
-    background: #1b1b1b;
+  .navbar__contents__value:hover {
+    color: rgba(34, 36, 33, 0.8);
+    background: #fff;
   }
   #check:checked ~ ul {
     left: 0%;
   }
 }
 @media (max-width: 600px) {
-  nav {
-    height: 5rem;
-  }
   .brand {
-    height: 1.8rem;
+    height: 60px;
     width: auto;
-    margin: 1.5rem 0rem 0rem 0rem;
   }
   .checkbtn {
     float: right;
-    font-size: 1.8rem;
-    margin: 0rem 0rem;
-    padding: 1.5rem 0rem 0rem 0rem;
+    font-size: 12px;
+    margin: 0px 0px;
+    padding: 0px;
   }
-  nav ul li a {
-    font-size: 1.2rem;
+  .navbar__contents__value {
+    font-size: 20px;
   }
 }

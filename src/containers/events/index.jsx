@@ -36,17 +36,8 @@ const EventCard = (props) => {
   );
 };
 
-const Events = () => {
+const Events = ({ id }) => {
   const boiler = [
-    {
-      id: 1,
-      img: sample,
-      header: "Myocardial and pericardia disease meeting",
-      location: "Virtually",
-      time: "20:30 - 21:30 IST",
-      date: "06, November 2023",
-      description: "Improving diagnosis and treatment of heart muscle and pericardial disease. Promoting understanding of these disorders among cardiologists.",
-    },
     {
       id: 1,
       img: sample,
@@ -76,7 +67,7 @@ const Events = () => {
     },
   ];
   return (
-    <section className="eventscontainer">
+    <section id={id} className="eventscontainer">
       <div className="eventsContainer__header">
         <h6>All Events</h6>
         <div className="divider" />

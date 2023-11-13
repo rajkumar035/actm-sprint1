@@ -47,7 +47,7 @@ const WebinarCard = (props) => {
   );
 };
 
-const Webinars = () => {
+const Webinars = ({ id }) => {
   const boiler = [
     {
       id: 1,
@@ -87,7 +87,7 @@ const Webinars = () => {
     },
   ];
   return (
-    <section className="webinarContainer">
+    <section id={id} className="webinarContainer">
       <div className="webinarContainer__header">
         <h6>All Webinars</h6>
         <div className="divider" />
