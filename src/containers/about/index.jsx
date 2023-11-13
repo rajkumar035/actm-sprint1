@@ -30,7 +30,7 @@ const Story = ({ id }) => {
           <div className="divider" />
           <p>We are the change agents, innovators of tomorrow in the realm of health care. Our purpose is to mentor and inspire the next generation of medical pioneers, by equipping them with the essential resources, knowledge, and networks to shape a healthier world. As a collective of like-minded individuals, our shared aspiration is to weave together dispersed communities of medical students, doctors, and healthcare professionals worldwide, fostering a tapestry of collaboration for a brighter healthcare future.</p>
         </div>
-        <img className="aboutImage" alt="aboutImage" src={StoryPic} />
+        <img loading="lazy" className="aboutImage" alt="aboutImage" src={StoryPic} />
       </div>
     </section>
   );
