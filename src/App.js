@@ -47,7 +47,7 @@ export const PrivateRoute = ({ children, userType }) => {
 };
 
 function App() {
-  window.addEventListener("mousemove", CssAnimations.customCursorOnMOuseMoveMethod);
+  // window.addEventListener("mousemove", CssAnimations.customCursorOnMOuseMoveMethod);
   return (
     <React.Suspense fallback={<SuspenseLoader />}>
       <Routes>
