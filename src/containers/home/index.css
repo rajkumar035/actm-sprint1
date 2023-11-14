@@ -29,7 +29,7 @@
   font-weight: 400;
   line-height: 65px;
   color: #fff;
-  font-family: "Arbutus Slab", serif;
+  font-family: 'Arbutus Slab', serif;
   letter-spacing: 0.08em;
   margin-bottom: 20px;
 }
@@ -60,7 +60,7 @@
   height: 25px;
   letter-spacing: 0.04em;
   width: auto;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   cursor: pointer;
 }
 
@@ -84,10 +84,11 @@
   height: 25px;
   letter-spacing: 0.02em;
   width: auto;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 300;
   letter-spacing: 0.06em;
   font-size: 14px;
+  z-index: 100;
 }
 
 /* Footer */
