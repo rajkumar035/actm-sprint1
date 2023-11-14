@@ -8,12 +8,15 @@ import { useNavigate } from 'react-router-dom';
 import { useGoogleAuth } from './../../contexts/GoogleAuthContext';
 const logo = require('../../assets/images/logo.png');
 
-const Header = () => {
+const Home = ({ id }) => {
   const navigate = useNavigate();
 
   const handleNavigation = (path) => {
     navigate(path);
   };
+  const text = "Inspiring Medical Pioneers to Shape the Future of Healthcare";
+  const myArray = [...text];
+  CssAnimations.typewritingAnimation(".typeText", myArray);
 
   return (
     <>

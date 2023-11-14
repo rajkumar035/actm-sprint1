@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./index.css";
 import Grid from "@mui/material/Grid";
 import research from "../../assets/svg/research.svg";
@@ -7,6 +7,7 @@ import webinars from "../../assets/svg/webinars.svg";
 import conference from "../../assets/svg/conference.svg";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
+import CssAnimations from "../../utils/animations";
 
 const OfferCard = (props) => {
   const { icon, header, content } = props;
@@ -24,7 +25,7 @@ const OfferCard = (props) => {
   );
 };
 
-const Offers = () => {
+const Offers = ({ id }) => {
   const contents = [
     {
       icon: research,
@@ -47,11 +48,22 @@ const Offers = () => {
       content: "Showcase your work on a global stage",
     },
   ];
-
   const theme = useTheme();
   const isMobileScreen = useMediaQuery(theme.breakpoints.down("lg"));
+  const currentScreenHeight = window.innerHeight;
+  useEffect(() => {
+    window.addEventListener("scroll", (e) => {
+      CssAnimations.textAppearOnScrollMethod(e, ".revealhorizontal", 200, "revealhorizontalShow");
+    });
+    return () => {
+      window.removeEventListener("scroll", (e) => {
+        CssAnimations.textAppearOnScrollMethod(e, ".revealhorizontal", 200, "revealhorizontalShow");
+      });
+    };
+  }, [currentScreenHeight]);
+
   return (
-    <section className="offercontainer">
+    <section id={id} className="offercontainer">
       <div className="offercontainer__header">
         <h5>What we Offer ?</h5>
         <p>We offer transformative mentorship, uniting healthcare visionaries and providing the resources and networks needed to shape a healthier world.</p>
@@ -60,7 +72,7 @@ const Offers = () => {
         <Grid container spacing={isMobileScreen ? 4 : 5} justifyContent={"center"} alignItems={"stretch"}>
           {contents.map((items, index) => {
             return (
-              <Grid item={true} key={index} lg={3} md={4} sm={6} xs={12}>
+              <Grid item={true} className="revealhorizontal" key={index} lg={3} md={4} sm={6} xs={12}>
                 <OfferCard {...items} />
               </Grid>
             );
