@@ -85,10 +85,17 @@ const Header = () => {
                   <button onClick={googleSignOut} className="navbar__contents__value">
                     Sign Out
                   </button>
-                  {currentUser?.userType === "admin" && (
+                  {currentUser?.userType === "admin" ? (
                     <>
                       |
                       <a className="navbar__contents__value" href="/admin">
+                        Go to
+                      </a>
+                    </>
+                  ) : (
+                    <>
+                      |
+                      <a className="navbar__contents__value" href="/user">
                         Go to
                       </a>
                     </>
@@ -109,10 +116,17 @@ const Header = () => {
                     <button onClick={googleSignOut} className="navbar__contents__value">
                       Sign Out
                     </button>
-                    {currentUser?.userType === "admin" && (
+                    {currentUser?.userType === "admin" ? (
                       <>
                         |
                         <a className="navbar__contents__value" href="/admin">
+                          Go to
+                        </a>
+                      </>
+                    ) : (
+                      <>
+                        |
+                        <a className="navbar__contents__value" href="/user">
                           Go to
                         </a>
                       </>
