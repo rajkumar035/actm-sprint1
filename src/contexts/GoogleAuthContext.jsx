@@ -67,7 +67,7 @@ const GoogleAuthenticationProvider = ({ children }) => {
           setPending(false);
         }
       }),
-    []
+    [naviagte]
   );
 
   const value = {
