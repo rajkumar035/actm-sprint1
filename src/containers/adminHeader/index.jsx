@@ -78,7 +78,7 @@ export default function AdminSideBar({ children }) {
       headerMenuItems: [
         {
           text: "Dashboard",
-          path: "/admin/",
+          path: "/admin/home",
         },
         {
           text: "Events",
@@ -105,7 +105,7 @@ export default function AdminSideBar({ children }) {
       headerMenuItems: [
         {
           text: "Dashboard",
-          path: "/user/",
+          path: "/user/home",
         },
         {
           text: "Visit Site",

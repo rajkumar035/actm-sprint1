@@ -39,7 +39,7 @@ const AdminDashboard = () => {
     <Container maxWidth="lg">
       <h2>Hello, {currentUser?.displayName}</h2>
       <Grid container spacing={3} margin={"10px 0px"} justifyContent={"center"}>
-        <Grid item={true} lg={6} md={6} sm={6}>
+        <Grid item={true} lg={6} md={12} sm={12}>
           <Box sx={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px;", padding: "30px", textAlign: "center", borderRadius: "10px", borderRight: "6px solid #3A5199" }}>
             <Typography fontSize={"20px"} color={"rgba(0, 0, 0, 0.5)"} fontWeight={"600"}>
               Events
