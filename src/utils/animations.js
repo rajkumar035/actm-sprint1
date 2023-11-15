@@ -9,9 +9,6 @@ export default class CssAnimations {
       } else {
         getReveals[i].classList.remove(classname);
       }
-      if (element < 0) {
-        getReveals[i].classList.remove(classname);
-      }
     }
   }
 
@@ -20,10 +17,14 @@ export default class CssAnimations {
     const cursor2 = document.querySelector(".cursor2");
     const pagex = e.pageX;
     const pagey = e.pageY;
-    cursor.style.top = pagey + "px";
-    cursor.style.left = pagex + "px";
-    cursor2.style.top = cursor.style.top;
-    cursor2.style.left = cursor.style.left;
+    if (cursor) {
+      cursor.style.top = pagey + "px";
+      cursor.style.left = pagex + "px";
+    }
+    if (cursor2) {
+      cursor2.style.top = cursor.style.top;
+      cursor2.style.left = cursor.style.left;
+    }
   }
 
   static typewritingAnimation(element, array) {
@@ -34,12 +35,28 @@ export default class CssAnimations {
         const letter = array[i];
         typeText += letter;
         const moralElement = document.querySelector(element);
-        moralElement.textContent = typeText;
+        if (moralElement) {
+          moralElement.textContent = typeText;
+        }
       }, i * 200);
     }
 
     for (let i = 0; i < array.length; i++) {
       processElement(i);
+    }
+  }
+
+  static async mouseOverTextVisible(name) {
+    const getMouseElement = document.querySelector(name);
+    if (getMouseElement) {
+      getMouseElement?.classList.add("visibleText");
+    }
+  }
+
+  static async mouseOutTextInVicible(name) {
+    const getMouseElement = document.querySelector(name);
+    if (getMouseElement) {
+      getMouseElement?.classList.remove("visibleText");
     }
   }
 }

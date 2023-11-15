@@ -1,12 +1,14 @@
 import Pagination from "@mui/material/Pagination";
 import React from "react";
 
-const AppPagination = () => {
+const AppPagination = ({ data, count, currentindex, handlePageChange }) => {
   return (
     <div className="pagination">
       <Pagination
         color="secondary"
-        count={10}
+        count={Math.ceil(data?.length / count)}
+        page={currentindex}
+        onChange={handlePageChange}
         sx={{
           ul: {
             "& .MuiPaginationItem-root": {

@@ -115,9 +115,15 @@
 }
 
 .vissioncontainer img {
-  max-width: 100%; /* Ensure the image doesn't exceed its container's width */
+  max-width: 100%;
   height: auto;
   border-radius: 10px;
+  transition: all 0.6s ease-in-out;
+}
+
+.vissioncontainer img:hover {
+  box-shadow: -2px 1px 33px 8px rgba(255, 255, 255, 0.25);
+  border: transparent;
 }
 
 .vissioncontact {
@@ -187,6 +193,9 @@
 @media screen and (max-width: 400px) {
   .missioncontainer {
     padding: 40px 10px;
+  }
+  .footercontainer div h6 {
+    font-size: 14px;
   }
   .missioncontainer__content__holder {
     margin: 10px;

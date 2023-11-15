@@ -1,155 +1,170 @@
-import React, { useState, Fragment } from 'react';
-import {
-  AppBar,
-  Typography,
-  Toolbar,
-  Button,
-  IconButton,
-  Avatar,
-  Box,
-  Drawer,
-  List,
-  ListItem,
-  ListItemText,
-  Menu,
-  MenuItem,
-  useTheme,
-} from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import { Link } from 'react-router-dom';
-import { useGoogleAuth } from '../../contexts/GoogleAuthContext';
+import * as React from "react";
+import { styled, useTheme } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Drawer from "@mui/material/Drawer";
+import CssBaseline from "@mui/material/CssBaseline";
+import MuiAppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import List from "@mui/material/List";
+import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import { Link } from "react-router-dom";
+import left from "../../assets/svg/leftArrow.svg";
+import right from "../../assets/svg/rightArrow.svg";
+import { useGoogleAuth } from "../../contexts/GoogleAuthContext";
+import { Avatar, Typography } from "@mui/material";
 
 const drawerWidth = 240;
 
-const AppHeaderAdminData = [
-  {
-    headerMenuItems: [
-      {
-        text: 'Dashboard',
-        icon: '',
-        path: '/admin/',
-      },
-      {
-        text: 'Events',
-        icon: '',
-        path: '/admin/events',
-      },
+const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(({ theme, open }) => ({
+  flexGrow: 1,
+  padding: theme.spacing(3),
+  transition: theme.transitions.create("margin", {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  marginLeft: `-${drawerWidth}px`,
+  ...(open && {
+    transition: theme.transitions.create("margin", {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    marginLeft: 0,
+  }),
+}));
 
-      {
-        text: 'Webinars',
-        icon: '',
-        path: '/admin/webinars',
-      },
-      {
-        text: 'Projects',
-        icon: '',
-        path: '/admin/projects',
-      },
-      {
-        text: 'Visit Site',
-        icon: '',
-        path: '/',
-      },
-    ],
-  },
-];
+const AppBar = styled(MuiAppBar, {
+  shouldForwardProp: (prop) => prop !== "open",
+})(({ theme, open }) => ({
+  transition: theme.transitions.create(["margin", "width"], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  ...(open && {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: `${drawerWidth}px`,
+    transition: theme.transitions.create(["margin", "width"], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  }),
+}));
 
-const AppHeaderUserData = [
-  {
-    headerMenuItems: [
-      {
-        text: 'Dashboard',
-        icon: '',
-        path: '/user/',
-      },
-      {
-        text: 'Visit Site',
-        icon: '',
-        path: '/',
-      },
-    ],
-  },
-];
+const DrawerHeader = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  padding: theme.spacing(0, 1),
+  ...theme.mixins.toolbar,
+  justifyContent: "flex-end",
+}));
 
-const useStyles = () => {
+export default function AdminSideBar({ children }) {
   const theme = useTheme();
+  const [open, setOpen] = React.useState(false);
 
-  return {
-    sectionDesktop: {
-      display: 'none',
-      [theme.breakpoints.up('md')]: {
-        display: 'flex',
-      },
-    },
-    sectionMobile: {
-      display: 'flex',
-      visibility: 'visible', // 'show' should be 'visible'
-      [theme.breakpoints.up('md')]: {
-        visibility: 'hidden',
-        display: 'none',
-      },
-    },
-    drawer: {
-      width: drawerWidth,
-    },
-    drawerPaper: {
-      width: drawerWidth,
-    },
-    root: {
-      display: 'flex',
-    },
-    respTitle: {
-      flexGrow: 1,
-      [theme.breakpoints.up('md')]: {
-        flexGrow: 0,
-      },
-    },
-    routerLink: {
-      textDecoration: 'none',
-      color: 'inherit',
-    },
+  const handleDrawerOpen = () => {
+    setOpen(true);
   };
-};
 
-const AdminHeader = () => {
-  const classes = useStyles();
-
-  const [headerMenuOpen, setheaderMenuOpen] = useState(false);
-
-  const [avatarMenuAnchorEl, setAvatarMenuAnchorEl] = useState(null);
-  const open = Boolean(avatarMenuAnchorEl);
-  const avatarMenuClick = (event) => {
-    setAvatarMenuAnchorEl(event.currentTarget);
+  const handleDrawerClose = () => {
+    setOpen(false);
   };
-  const avatarMenuClose = () => {
-    setAvatarMenuAnchorEl(null);
-  };
+
+  const AppHeaderAdminData = [
+    {
+      headerMenuItems: [
+        {
+          text: "Dashboard",
+          path: "/admin/",
+        },
+        {
+          text: "Events",
+          path: "/admin/events",
+        },
+
+        {
+          text: "Webinars",
+          path: "/admin/webinars",
+        },
+        {
+          text: "Projects",
+          path: "/admin/projects",
+        },
+        {
+          text: "Visit Site",
+          path: "/",
+        },
+      ],
+    },
+  ];
+
+  const AppHeaderUserData = [
+    {
+      headerMenuItems: [
+        {
+          text: "Dashboard",
+          path: "/user/",
+        },
+        {
+          text: "Visit Site",
+          path: "/",
+        },
+      ],
+    },
+  ];
+
   const { googleSignOut, currentUser } = useGoogleAuth();
 
   const handleLogout = () => {
     googleSignOut();
   };
+
   return (
-    <div>
+    <Box sx={{ display: "flex" }}>
+      <CssBaseline />
+      <AppBar position="fixed" open={open}>
+        <Toolbar>
+          <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawerOpen} edge="start" sx={{ mr: 2, ...(open && { display: "none" }) }}>
+            <MenuIcon />
+          </IconButton>
+          <Box display={"flex"} alignItems={"center"} gap={"20px"}>
+            <IconButton sx={{ p: 0 }}>
+              <Avatar alt={currentUser && currentUser?.displayName} src={currentUser && currentUser?.photoURL} />
+            </IconButton>
+            <Link to="/">
+              <Typography variant="h6" sx={{ mr: 3, color: "white" }}>
+                {currentUser && currentUser?.displayName}
+              </Typography>
+            </Link>
+          </Box>
+        </Toolbar>
+      </AppBar>
       <Drawer
-        variant='permanent'
-        anchor='left'
         sx={{
-          display: { xs: 'block', md: 'none' },
+          width: drawerWidth,
+          flexShrink: 0,
+          "& .MuiDrawer-paper": {
+            width: drawerWidth,
+            boxSizing: "border-box",
+          },
         }}
-        classes={{ paper: classes.drawerPaper }}
-        className={classes.drawer}>
-        <Toolbar />
+        variant="persistent"
+        anchor="left"
+        open={open}
+      >
+        <DrawerHeader>
+          <IconButton onClick={handleDrawerClose}>{theme.direction === "ltr" ? <img alt="left" style={{ height: "30px", width: "30px" }} src={left} /> : <img alt="right" style={{ height: "30px", width: "30px" }} src={right} />}</IconButton>
+        </DrawerHeader>
+        <Divider />
         <List>
-          {currentUser.userType === 'admin'
+          {currentUser?.userType === "admin"
             ? AppHeaderAdminData.map((item) =>
                 item.headerMenuItems.map((item, index) => (
-                  <Link
-                    to={item.path}
-                    className={classes.routerLink}
-                    key={index}>
-                    <ListItem button>
-                      {item.icon}
+                  <Link to={item.path} key={index}>
+                    <ListItem>
                       <ListItemText primary={item.text} sx={{ ml: 3 }} />
                     </ListItem>
                   </Link>
@@ -157,131 +172,28 @@ const AdminHeader = () => {
               )
             : AppHeaderUserData.map((item) =>
                 item.headerMenuItems.map((item, index) => (
-                  <Link
-                    to={item.path}
-                    className={classes.routerLink}
-                    key={index}>
-                    <ListItem button>
-                      {item.icon}
+                  <Link to={item.path} key={index}>
+                    <ListItem>
                       <ListItemText primary={item.text} sx={{ ml: 3 }} />
                     </ListItem>
                   </Link>
                 ))
               )}
+          <Link>
+            <ListItem
+              onClick={() => {
+                handleLogout();
+              }}
+            >
+              <ListItemText primary={"Logout"} sx={{ ml: 3 }} />
+            </ListItem>
+          </Link>
         </List>
       </Drawer>
-      <AppBar
-        position='fixed'
-        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
-        <Toolbar>
-          <IconButton
-            size='large'
-            edge='start'
-            color='inherit'
-            aria-label='menu'
-            sx={{ mr: 3, display: { xs: 'block', md: 'none' } }}
-            className={classes.sectionMobile}
-            onClick={() => setheaderMenuOpen(!headerMenuOpen)}>
-            <MenuIcon />
-          </IconButton>
-          <Box
-            style={{ flexGrow: 1 }}
-            className={classes.sectionDesktop}
-            sx={{ mr: 3, display: { xs: 'none', md: 'block' } }}>
-            {currentUser.userType === 'admin'
-              ? AppHeaderAdminData.map((item) =>
-                  item.headerMenuItems.map((item, index) => (
-                    <Link
-                      to={item.path}
-                      className={classes.routerLink}
-                      key={index}>
-                      <Button
-                        startIcon={item.icon}
-                        sx={{ mr: 3, color: 'white' }}>
-                        {item.text}
-                      </Button>
-                    </Link>
-                  ))
-                )
-              : AppHeaderUserData.map((item) =>
-                  item.headerMenuItems.map((item, index) => (
-                    <Link
-                      to={item.path}
-                      className={classes.routerLink}
-                      key={index}>
-                      <Button
-                        startIcon={item.icon}
-                        sx={{ mr: 3, color: 'white' }}>
-                        {item.text}
-                      </Button>
-                    </Link>
-                  ))
-                )}
-          </Box>
-          <Fragment>
-            <Link to='/' className={classes.routerLink}>
-              <Typography
-                variant='h6'
-                sx={{ mr: 3, color: 'white' }}
-                className={classes.respTitle}>
-                {currentUser && currentUser.displayName}
-              </Typography>
-            </Link>
-            <Box>
-              <IconButton sx={{ p: 0 }} onClick={avatarMenuClick}>
-                <Avatar
-                  alt={currentUser && currentUser.displayName}
-                  src={currentUser && currentUser.photoURL}
-                />
-              </IconButton>
-            </Box>
-            <Menu
-              anchorEl={avatarMenuAnchorEl}
-              open={open}
-              onClose={avatarMenuClose}
-              onClick={avatarMenuClose}
-              PaperProps={{
-                elevation: 0,
-                sx: {
-                  overflow: 'visible',
-                  filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                  mt: 1.5,
-                  '& .MuiAvatar-root': {
-                    width: 32,
-                    height: 32,
-                    ml: -0.5,
-                    mr: 1,
-                  },
-                  '&:before': {
-                    content: '""',
-                    display: 'block',
-                    position: 'absolute',
-                    top: 0,
-                    right: 14,
-                    width: 10,
-                    height: 10,
-                    bgcolor: 'background.paper',
-                    transform: 'translateY(-50%) rotate(45deg)',
-                    zIndex: 0,
-                  },
-                },
-              }}
-              transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-              anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}>
-              <Link
-                to='/'
-                className={classes.routerLink}
-                onClick={handleLogout}>
-                <MenuItem>
-                  <ListItemText>Logout</ListItemText>
-                </MenuItem>
-              </Link>
-            </Menu>
-          </Fragment>
-        </Toolbar>
-      </AppBar>
-    </div>
+      <Main open={open}>
+        <DrawerHeader />
+        {children}
+      </Main>
+    </Box>
   );
-};
-
-export default AdminHeader;
+}

@@ -92,6 +92,8 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 30px;
+  height: 150px;
+  overflow-y: auto;
   letter-spacing: 0.02em;
 }
 
@@ -114,7 +116,7 @@
   background: none;
   border: 2px solid #fff;
   color: #fff;
-  transition: all 0.4s ease;
+  transition: all 0.4s ease-in-out;
 }
 
 @media screen and (max-width: 1000px) {

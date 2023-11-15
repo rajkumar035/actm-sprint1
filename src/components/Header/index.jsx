@@ -2,6 +2,7 @@ import "./index.css";
 import { useState } from "react";
 import close from "../../assets/svg/close.svg";
 import menu from "../../assets/svg/menu.svg";
+import { useGoogleAuth } from "../../contexts/GoogleAuthContext";
 const logo = require("../../assets/images/logo.png");
 
 const Header = () => {
@@ -13,12 +14,16 @@ const Header = () => {
 
   document.addEventListener("scroll", (e) => {
     const getHeader = document.querySelector("#header");
-    if (window.scrollY > 700) {
-      getHeader.classList.add("dark__header");
-    } else {
-      getHeader.classList.remove("dark__header");
+    if (getHeader) {
+      if (window.scrollY > 700) {
+        getHeader.classList.add("dark__header");
+      } else {
+        getHeader.classList.remove("dark__header");
+      }
     }
   });
+
+  const { currentUser, googleSignIn, googleSignOut, loading } = useGoogleAuth();
 
   return (
     <nav id="header">
@@ -75,28 +80,49 @@ const Header = () => {
           </li>
           {state && (
             <li className="navbar__contents__list">
-              <a className="navbar__contents__value" href="#missions">
-                Login
-              </a>
-            </li>
-          )}
-          {state && (
-            <li className="navbar__contents__list">
-              <a className="navbar__contents__value" href="#missions">
-                Register
-              </a>
+              {currentUser ? (
+                <div style={{ display: "flex", gap: "10px" }}>
+                  <button onClick={googleSignOut} className="navbar__contents__value">
+                    Sign Out
+                  </button>
+                  {currentUser?.userType === "admin" && (
+                    <>
+                      |
+                      <a className="navbar__contents__value" href="/admin">
+                        Go to
+                      </a>
+                    </>
+                  )}
+                </div>
+              ) : (
+                <button className="navbar__contents__value" onClick={googleSignIn} disabled={loading && !currentUser ? true : false}>
+                  Login with Google
+                </button>
+              )}
             </li>
           )}
           {!state && (
             <li>
               <div className="header__useractions">
-                <a className="navbar__contents__value" href="#login">
-                  login
-                </a>
-                |
-                <a className="navbar__contents__value" href="#register">
-                  register
-                </a>
+                {currentUser ? (
+                  <>
+                    <button onClick={googleSignOut} className="navbar__contents__value">
+                      Sign Out
+                    </button>
+                    {currentUser?.userType === "admin" && (
+                      <>
+                        |
+                        <a className="navbar__contents__value" href="/admin">
+                          Go to
+                        </a>
+                      </>
+                    )}
+                  </>
+                ) : (
+                  <button className="navbar__contents__value" onClick={googleSignIn} disabled={loading && !currentUser ? true : false}>
+                    Login with Google
+                  </button>
+                )}
               </div>
             </li>
           )}

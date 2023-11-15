@@ -1,104 +1,48 @@
-import React from 'react';
-import './index.css';
-import instagram from '../../assets/svg/insta.svg';
-import linkedIn from '../../assets/svg/linkedin.svg';
-import twitter from '../../assets/svg/twitter.svg';
-import facebook from '../../assets/svg/facebook.svg';
-import { useNavigate } from 'react-router-dom';
-import { useGoogleAuth } from './../../contexts/GoogleAuthContext';
-const logo = require('../../assets/images/logo.png');
+import React from "react";
+import "./index.css";
+import instagram from "../../assets/svg/insta.svg";
+import linkedIn from "../../assets/svg/linkedin.svg";
+import twitter from "../../assets/svg/twitter.svg";
+import facebook from "../../assets/svg/facebook.svg";
+import CssAnimations from "../../utils/animations";
+import { useNavigate } from "react-router-dom";
 
-const Header = ({ id }) => {
+const Home = ({ id }) => {
   const navigate = useNavigate();
-
   const handleNavigation = (path) => {
     navigate(path);
   };
-  const text = 'Inspiring Medical Pioneers to Shape the Future of Healthcare';
+  const text = "Inspiring Medical Pioneers to Shape the Future of Healthcare";
   const myArray = [...text];
-  // CssAnimations.typewritingAnimation('.typeText', myArray);
+  CssAnimations.typewritingAnimation(".typeText", myArray);
 
   return (
-    <>
-      <nav className='header'>
-        <button
-          onClick={() => {
-            handleNavigation('/webinars');
-          }}>
-          Webinars
-        </button>
-        <button
-          onClick={() => {
-            handleNavigation('/about');
-          }}>
-          About
-        </button>
-        <img alt='logo' src={logo} />
-        <button
-          onClick={() => {
-            handleNavigation('/offers');
-          }}>
-          Offers
-        </button>
-        <button
-          onClick={() => {
-            handleNavigation('/events');
-          }}>
-          Events
-        </button>
-      </nav>
-    </>
-  );
-};
-
-const Home = () => {
-  const navigate = useNavigate();
-
-  const handleNavigation = (path) => {
-    navigate(path);
-  };
-  const { currentUser, googleSignIn, googleSignOut, loading } = useGoogleAuth();
-  return (
-    <section className='homepage'>
-      <Header />
-      <div className='homepage__layout'>
-        <div className='header__actions'>
-          {currentUser ? (
-            <button onClick={googleSignOut} className='loginButton'>
-              Sign Out
-            </button>
-          ) : (
-            <button
-              className='loginButton'
-              onClick={googleSignIn}
-              disabled={loading && !currentUser ? true : false}>
-              Login with Google
-            </button>
-          )}
-        </div>
-        <div className='moraltext'>
-          <h1>Inspiring Medical Pioneers to Shape the Future of Healthcare </h1>
+    <section id={id} className="homepage">
+      <div className="homepage__layout">
+        <div class="moraltext">
+          <h1 className="typeText">|</h1>
           <button
-            className='btn--outlined'
+            className="btn--outlined"
             onClick={() => {
-              handleNavigation('/missions');
-            }}>
+              handleNavigation("/userregistration");
+            }}
+          >
             Join Now
           </button>
         </div>
-        <div className='contact__list'>
-          <button className='btn--text'>
-            <img src={twitter} alt='twitter' />
-          </button>
-          <button className='btn--text'>
-            <img src={facebook} alt='facebook' />
-          </button>
-          <button className='btn--text'>
-            <img src={instagram} alt='instagram' />
-          </button>
-          <button className='btn--text'>
-            <img src={linkedIn} alt='linkedIn' />
-          </button>
+        <div className="contact__list">
+          <a className="btn--text" href="/">
+            <img src={twitter} alt="twitter" />
+          </a>
+          <a className="btn--text" href="/">
+            <img src={facebook} alt="facebook" />
+          </a>
+          <a className="btn--text" href="https://instagram.com/theactm.org2410?utm_source=qr">
+            <img src={instagram} alt="instagram" />
+          </a>
+          <a className="btn--text" href="https://www.linkedin.com/company/the-academy-of-clinical-translation-medicine/">
+            <img src={linkedIn} alt="linkedIn" />
+          </a>
         </div>
       </div>
     </section>

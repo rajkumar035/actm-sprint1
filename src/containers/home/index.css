@@ -23,31 +23,47 @@
   text-align: center;
 }
 
+.bounce {
+  animation: bouncing 1s ease-in-out infinite;
+}
+
 .moraltext h1 {
   margin: 0px;
   font-size: 38px;
   font-weight: 400;
   line-height: 65px;
   color: #fff;
-  font-family: 'Arbutus Slab', serif;
+  font-family: "Arbutus Slab", serif;
   letter-spacing: 0.08em;
   margin-bottom: 20px;
 }
 
 .moraltext button {
   border-color: #fff;
+  position: relative;
   color: #fff;
+  transition: all 0.4s ease-in-out;
+  animation: bouncing 2s ease-in-out infinite;
 }
 
 .moraltext button:hover {
   border-color: transparent;
   color: #000;
   background: #fff;
-  transition: all 0.4s ease-in-out;
   box-shadow: rgba(255, 255, 255, 0.2) 0px 7px 29px 0px;
 }
 
-/* Footer */
+@keyframes bouncing {
+  0% {
+    top: 0px;
+  }
+  50% {
+    top: 20px;
+  }
+  100% {
+    top: 0px;
+  }
+}
 
 .contact__list {
   display: flex;

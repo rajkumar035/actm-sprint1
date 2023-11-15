@@ -1,8 +1,9 @@
-import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
-import React, { useContext, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { auth } from './../config/firebaseConfig';
-import { AdminMails } from './../App';
+import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import React, { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { auth } from "./../config/firebaseConfig";
+import { AdminMails } from "./../App";
+
 const GoogleAuthContext = React.createContext();
 export const useGoogleAuth = () => {
   return useContext(GoogleAuthContext);
@@ -11,32 +12,39 @@ export const useGoogleAuth = () => {
 const GoogleAuthenticationProvider = ({ children }) => {
   const naviagte = useNavigate();
   const [currentUser, setCurrentUser] = useState(null);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const gAuthProvider = new GoogleAuthProvider();
   const [pending, setPending] = useState(true);
 
   const googleSignIn = async () => {
     try {
-      setError('');
+      setError("");
       setLoading(true);
       await signInWithPopup(auth, gAuthProvider);
     } catch {
-      setError('Failed To SignIn');
+      setError("Failed To SignIn");
     }
   };
 
   const googleSignOut = async () => {
     try {
-      setError('');
+      setError("");
       setLoading(true);
-      await signOut(auth);
-      setCurrentUser(null);
+      await signOut(auth)
+        .then((res) => {
+          setCurrentUser(null);
+          setLoading(false);
+          window.location.href = "/";
+        })
+        .catch((err) => {
+          setLoading(false);
+          setError("Failed To SignOut");
+        });
     } catch {
-      setError('Failed To SignOut');
       setLoading(false);
+      setError("Failed To SignOut");
     }
-    setLoading(false);
   };
 
   useEffect(
@@ -45,14 +53,14 @@ const GoogleAuthenticationProvider = ({ children }) => {
         if (user) {
           const usr = {
             ...user,
-            userType: AdminMails.includes(user.email) ? 'admin' : 'user',
+            userType: AdminMails.includes(user.email) ? "admin" : "user",
           };
           setCurrentUser(usr);
           setPending(false);
           if (AdminMails.includes(user.email)) {
-            naviagte('/admin');
+            naviagte("/admin");
           } else {
-            naviagte('/user');
+            naviagte("/user");
           }
         } else {
           setCurrentUser(user);
@@ -69,13 +77,7 @@ const GoogleAuthenticationProvider = ({ children }) => {
     error,
     loading,
   };
-  return pending ? (
-    <p>Please Wait 🔐</p>
-  ) : (
-    <GoogleAuthContext.Provider value={value}>
-      {children}
-    </GoogleAuthContext.Provider>
-  );
+  return pending ? <p>Please Wait 🔐</p> : <GoogleAuthContext.Provider value={value}>{children}</GoogleAuthContext.Provider>;
 };
 
 export default GoogleAuthenticationProvider;

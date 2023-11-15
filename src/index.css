@@ -6,7 +6,7 @@ body {
   padding: 0;
   scroll-behavior: smooth !important;
   background: #f7f7f7;
-  cursor: none;
+  overflow-x: hidden;
 }
 
 .btn--outlined {
@@ -69,14 +69,38 @@ a {
   }
 }
 
+/* Animations */
+
 .reveal {
   transform: translateY(-150px);
   transition: all 1.2s ease;
   opacity: 0;
+  color: transparent;
 }
 
-.reveal.revealShow {
+.revealShow {
   transform: translateY(0px);
+  opacity: 1;
+  color: inherit;
+}
+
+.revealhorizontal {
+  transform: translateX(400px);
+  opacity: 0;
+  transition: all 0.6s ease-in-out;
+}
+
+.revealhorizontalShow {
+  transform: translateX(0px);
+  opacity: 1;
+}
+
+.mouseHover {
+  opacity: 0.6;
+  transition: all 0.5s ease-in-out;
+}
+
+.visibleText {
   opacity: 1;
 }
 
@@ -89,9 +113,24 @@ a {
   width: 15px;
   background: rgba(0, 0, 0, 0.6);
   z-index: 9999999;
+  top: -30px;
+  left: -30px;
+  cursor: pointer;
 }
 
 .cursor2 {
+  top: -10px;
+  left: -10px;
   transition: all 0.2s ease;
   box-shadow: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.nodata__image {
+  height: 500px;
+  width: 500px;
+  margin: 20px auto;
 }

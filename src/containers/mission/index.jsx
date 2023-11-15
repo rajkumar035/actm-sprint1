@@ -3,6 +3,7 @@ import "./index.css";
 import left from "../../assets/svg/apostrophe.svg";
 import Grid from "@mui/material/Grid";
 import brand from "../../assets/images/brand.png";
+import CssAnimations from "../../utils/animations";
 const map = require("../../assets/images/map.png");
 
 const Mission = ({ id }) => {
@@ -20,7 +21,16 @@ const Mission = ({ id }) => {
             {mission?.map((items, index) => {
               return (
                 <Grid item={true} key={index} lg={6} md={6} xs={12}>
-                  <div className="missioncontainer__content">
+                  <div
+                    id={`mouseHover-${index}`}
+                    onMouseOut={() => {
+                      CssAnimations.mouseOutTextInVicible(`#mouseHover-${index}`);
+                    }}
+                    onMouseMove={() => {
+                      CssAnimations.mouseOverTextVisible(`#mouseHover-${index}`);
+                    }}
+                    className="missioncontainer__content mouseHover"
+                  >
                     <div>
                       <img src={left} alt="" />
                     </div>
@@ -46,7 +56,7 @@ const Mission = ({ id }) => {
               <h6>Head Quarters</h6>
               <p>Mumbai, India</p>
             </div>
-            <a href="/">
+            <a href="https://www.bing.com/maps?where=Mumbai%2C%20IN">
               <img alt="" src={map} />
             </a>
           </div>
@@ -55,7 +65,9 @@ const Mission = ({ id }) => {
       <footer className="footercontainer">
         <div>
           <h6>Designed and Developed by</h6>
-          <img alt="creator" src={brand} />
+          <a href="https://vdev.netlify.app/">
+            <img alt="creator" src={brand} />
+          </a>
         </div>
       </footer>
     </section>
