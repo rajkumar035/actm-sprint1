@@ -26,7 +26,7 @@ const Header = () => {
     }
   });
 
-  const { currentUser, googleSignIn, googleSignOut, loading } = useGoogleAuth();
+  const { currentUser, googleSignIn, googleSignOut } = useGoogleAuth();
 
   return (
     <nav id="header">
@@ -115,9 +115,9 @@ const Header = () => {
                   )}
                 </div>
               ) : (
-                <button className="navbar__contents__value" onClick={googleSignIn} disabled={loading && !currentUser ? true : false}>
+                <div className="navbar__contents__value" onClick={googleSignIn}>
                   Login with Google
-                </button>
+                </div>
               )}
             </li>
           )}
@@ -156,9 +156,9 @@ const Header = () => {
                     )}
                   </>
                 ) : (
-                  <button className="navbar__contents__value" onClick={googleSignIn} disabled={loading && !currentUser ? true : false}>
+                  <div className="navbar__contents__value" onClick={googleSignIn}>
                     Login with Google
-                  </button>
+                  </div>
                 )}
               </div>
             </li>
