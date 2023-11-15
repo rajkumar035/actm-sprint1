@@ -20,7 +20,7 @@ const OfferCard = (props) => {
         <h6>{header}</h6>
         <p>{content}</p>
       </div>
-      <button>Learn More</button>
+      {/* <button>Learn More</button> */}
     </div>
   );
 };
