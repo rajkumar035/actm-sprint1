@@ -88,14 +88,14 @@ const Header = () => {
                   {currentUser?.userType === "admin" ? (
                     <>
                       |
-                      <a className="navbar__contents__value" href="/admin">
+                      <a className="navbar__contents__value" href="/admin/">
                         Go to
                       </a>
                     </>
                   ) : (
                     <>
                       |
-                      <a className="navbar__contents__value" href="/user">
+                      <a className="navbar__contents__value" href="/user/">
                         Go to
                       </a>
                     </>
@@ -119,14 +119,14 @@ const Header = () => {
                     {currentUser?.userType === "admin" ? (
                       <>
                         |
-                        <a className="navbar__contents__value" href="/admin">
+                        <a className="navbar__contents__value" href="/admin/">
                           Go to
                         </a>
                       </>
                     ) : (
                       <>
                         |
-                        <a className="navbar__contents__value" href="/user">
+                        <a className="navbar__contents__value" href="/user/">
                           Go to
                         </a>
                       </>
