@@ -1,0 +1,6 @@
+export const REACT_APP_FIREBASE_API_KEY = "AIzaSyDKbTr6qdHfowhDOVVtOCI72c8r2OM7IkU";
+export const REACT_APP_FIREBASE_AUTH_DOMAIN = "actm-10207.firebaseapp.com";
+export const REACT_APP_FIREBASE_PROJECT_ID = "actm-10207";
+export const REACT_APP_FIREBASE_STORAGE_BUCKET = "actm-10207.appspot.com";
+export const REACT_APP_FIREBASE_MESSAGING_SENDER_ID = "610397174160";
+export const REACT_APP_FIREBASE_APP_ID = "1:610397174160:web:f4b37bbf39b8eece9edb15";
