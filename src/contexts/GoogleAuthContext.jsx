@@ -1,5 +1,5 @@
 import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "./../config/firebaseConfig";
 import { AdminMails } from "./../App";
@@ -31,44 +31,43 @@ const GoogleAuthenticationProvider = ({ children }) => {
     try {
       setError("");
       setLoading(true);
-      await signOut(auth)
-        .then((res) => {
-          setCurrentUser(null);
-          setLoading(false);
-          window.location.href = "/";
-        })
-        .catch((err) => {
-          setLoading(false);
-          setError("Failed To SignOut");
-        });
+      await signOut(auth);
+      setCurrentUser(null);
     } catch {
-      setLoading(false);
       setError("Failed To SignOut");
+      setLoading(false);
     }
+    setLoading(false);
   };
 
-  useEffect(
-    () =>
-      auth.onAuthStateChanged((user) => {
-        if (user) {
-          const usr = {
-            ...user,
-            userType: AdminMails.includes(user.email) ? "admin" : "user",
-          };
-          setCurrentUser(usr);
-          setPending(false);
-          if (AdminMails.includes(user.email)) {
-            naviagte("/admin");
-          } else {
-            naviagte("/user");
-          }
+  const navigateCallback = useCallback(naviagte, []);
+
+  useEffect(() => {
+    const handleAuthStateChanged = (user) => {
+      if (user) {
+        const usr = {
+          ...user,
+          userType: AdminMails.includes(user.email) ? "admin" : "user",
+        };
+        setCurrentUser(usr);
+        setPending(false);
+        if (AdminMails.includes(user.email)) {
+          navigateCallback("/admin");
         } else {
-          setCurrentUser(user);
-          setPending(false);
+          navigateCallback("/user");
         }
-      }),
-    [naviagte]
-  );
+      } else {
+        setCurrentUser(user);
+        setPending(false);
+      }
+    };
+
+    const unsubscribe = auth.onAuthStateChanged(handleAuthStateChanged);
+
+    return () => {
+      unsubscribe(); // Cleanup the subscription when the component unmounts
+    };
+  }, [navigateCallback]);
 
   const value = {
     currentUser,

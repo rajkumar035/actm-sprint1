@@ -84,7 +84,6 @@ export default function AdminSideBar({ children }) {
           text: "Events",
           path: "/admin/events",
         },
-
         {
           text: "Webinars",
           path: "/admin/webinars",
@@ -116,11 +115,7 @@ export default function AdminSideBar({ children }) {
     },
   ];
 
-  const { googleSignOut, currentUser } = useGoogleAuth();
-
-  const handleLogout = () => {
-    googleSignOut();
-  };
+  const { currentUser } = useGoogleAuth();
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -179,15 +174,6 @@ export default function AdminSideBar({ children }) {
                   </Link>
                 ))
               )}
-          <Link>
-            <ListItem
-              onClick={() => {
-                handleLogout();
-              }}
-            >
-              <ListItemText primary={"Logout"} sx={{ ml: 3 }} />
-            </ListItem>
-          </Link>
         </List>
       </Drawer>
       <Main open={open}>

@@ -200,4 +200,11 @@
   .missioncontainer__content__holder {
     margin: 10px;
   }
+  .footercontainer img {
+    height: 18px;
+    width: auto;
+  }
+  .footercontainer {
+    justify-content: center;
+  }
 }
