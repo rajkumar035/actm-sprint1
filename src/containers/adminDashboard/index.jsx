@@ -49,7 +49,7 @@ const AdminDashboard = () => {
             </Typography>
           </Box>
         </Grid>
-        <Grid item={true} lg={6} md={6} sm={6}>
+        <Grid item={true} lg={6} md={12} sm={12}>
           <Box sx={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px;", padding: "30px", textAlign: "center", borderRadius: "10px", borderRight: "6px solid #3A5199" }}>
             <Typography fontSize={"20px"} color={"rgba(0, 0, 0, 0.5)"} fontWeight={"600"}>
               Webinars
@@ -59,7 +59,7 @@ const AdminDashboard = () => {
             </Typography>
           </Box>
         </Grid>
-        <Grid item={true} lg={6} md={6} sm={6}>
+        <Grid item={true} lg={6} md={12} sm={12}>
           <Box sx={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px;", padding: "30px", textAlign: "center", borderRadius: "10px", borderRight: "6px solid #3A5199" }}>
             <Typography fontSize={"20px"} fontWeight={"600"} color={"rgba(0, 0, 0, 0.5)"}>
               Projects
