@@ -47,9 +47,9 @@ const GoogleAuthenticationProvider = ({ children }) => {
         setCurrentUser(usr);
         setPending(false);
         if (userType === "admin") {
-          <Navigate to={"/admin"} />;
+          <Navigate to={"/admin/home"} />;
         } else {
-          <Navigate to={"/user"} />;
+          <Navigate to={"/user/home"} />;
         }
       } else {
         setCurrentUser(user);

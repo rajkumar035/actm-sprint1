@@ -3,10 +3,13 @@ import { useState } from "react";
 import close from "../../assets/svg/close.svg";
 import menu from "../../assets/svg/menu.svg";
 import { useGoogleAuth } from "../../contexts/GoogleAuthContext";
+import { useNavigate } from "react-router-dom";
 const logo = require("../../assets/images/logo.png");
 
 const Header = () => {
   const [state, setState] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleNavState = () => {
     setState(!state);
@@ -88,16 +91,26 @@ const Header = () => {
                   {currentUser?.userType === "admin" ? (
                     <>
                       |
-                      <a className="navbar__contents__value" href="/admin/">
+                      <button
+                        className="navbar__contents__value"
+                        onClick={() => {
+                          navigate("/admin/home");
+                        }}
+                      >
                         Go to
-                      </a>
+                      </button>
                     </>
                   ) : (
                     <>
                       |
-                      <a className="navbar__contents__value" href="/user/">
+                      <button
+                        className="navbar__contents__value"
+                        onClick={() => {
+                          navigate("/user/home");
+                        }}
+                      >
                         Go to
-                      </a>
+                      </button>
                     </>
                   )}
                 </div>
@@ -119,16 +132,26 @@ const Header = () => {
                     {currentUser?.userType === "admin" ? (
                       <>
                         |
-                        <a className="navbar__contents__value" href="/admin/">
+                        <button
+                          className="navbar__contents__value"
+                          onClick={() => {
+                            navigate("/admin/home");
+                          }}
+                        >
                           Go to
-                        </a>
+                        </button>
                       </>
                     ) : (
                       <>
                         |
-                        <a className="navbar__contents__value" href="/user/">
+                        <button
+                          className="navbar__contents__value"
+                          onClick={() => {
+                            navigate("/user/home");
+                          }}
+                        >
                           Go to
-                        </a>
+                        </button>
                       </>
                     )}
                   </>

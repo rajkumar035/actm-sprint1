@@ -72,6 +72,7 @@ function App() {
                   <Routes>
                     <Route
                       index
+                      path="/home"
                       element={
                         <PrivateRoute userType="admin">
                           <AdminDashboard />
@@ -97,6 +98,7 @@ function App() {
                   <Routes>
                     <Route
                       index
+                      path="/home"
                       element={
                         <PrivateRoute userType="user">
                           <UserDashboard />
