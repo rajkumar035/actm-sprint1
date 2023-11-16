@@ -47,14 +47,14 @@ const Projects = ({ id }) => {
   useEffect(() => {
     getData("projects")
       .then((res) => {
+        const getNotCompletedData = res?.filter((items) => {
+          return items?.projectStatus === "Not Started";
+        });
         const getProgressData = res?.filter((items) => {
           return items?.projectStatus === "InProgress";
         });
         const getCompletedData = res?.filter((items) => {
           return items?.projectStatus === "Completed";
-        });
-        const getNotCompletedData = res?.filter((items) => {
-          return items?.projectStatus === "Not Started";
         });
         setprojectData({
           "Not Started": getNotCompletedData,
@@ -77,7 +77,7 @@ const Projects = ({ id }) => {
 
   const indexofCompletedData = currentPage.Completed * projectsPerPage;
   const indexOfFirstCompletedData = indexofCompletedData - projectsPerPage;
-  const currentCompletedProjects = projectData["Not Started"].slice(indexOfFirstCompletedData, indexofCompletedData) || [];
+  const currentCompletedProjects = projectData["Completed"].slice(indexOfFirstCompletedData, indexofCompletedData) || [];
 
   const handlePageChange = (event, value, key) => {
     setCurrentPage((prev) => ({ ...prev, [key]: value }));
