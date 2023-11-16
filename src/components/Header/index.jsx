@@ -7,13 +7,15 @@ import { useNavigate } from "react-router-dom";
 const logo = require("../../assets/images/logo.png");
 
 const Header = () => {
-  const [state, setState] = useState(false);
-
   const navigate = useNavigate();
+
+  const [state, setState] = useState(false);
 
   const handleNavState = () => {
     setState(!state);
   };
+
+  const { currentUser, googleSignIn, googleSignOut } = useGoogleAuth();
 
   document.addEventListener("scroll", (e) => {
     const getHeader = document.querySelector("#header");
@@ -25,8 +27,6 @@ const Header = () => {
       }
     }
   });
-
-  const { currentUser, googleSignIn, googleSignOut } = useGoogleAuth();
 
   return (
     <nav id="header">
@@ -84,17 +84,17 @@ const Header = () => {
           {state && (
             <li className="navbar__contents__list">
               {currentUser ? (
-                <div style={{ display: "flex", gap: "10px" }}>
-                  <button onClick={googleSignOut} className="navbar__contents__value">
+                <div className="header__useractions">
+                  <button onClick={googleSignOut} className="navbar__contents__value padding-none">
                     Sign Out
                   </button>
                   {currentUser?.userType === "admin" ? (
                     <>
-                      |
+                      <span>|</span>
                       <button
-                        className="navbar__contents__value"
+                        className="navbar__contents__value padding-none"
                         onClick={() => {
-                          navigate("/admin/home");
+                          navigate("/admin");
                         }}
                       >
                         Go to
@@ -102,11 +102,11 @@ const Header = () => {
                     </>
                   ) : (
                     <>
-                      |
+                      <span>|</span>
                       <button
-                        className="navbar__contents__value"
+                        className="navbar__contents__value padding-none"
                         onClick={() => {
-                          navigate("/user/home");
+                          navigate("/user");
                         }}
                       >
                         Go to
@@ -115,7 +115,7 @@ const Header = () => {
                   )}
                 </div>
               ) : (
-                <div className="navbar__contents__value" onClick={googleSignIn}>
+                <div className="navbar__contents__value padding-none" onClick={googleSignIn}>
                   Login with Google
                 </div>
               )}
@@ -126,16 +126,16 @@ const Header = () => {
               <div className="header__useractions">
                 {currentUser ? (
                   <>
-                    <button onClick={googleSignOut} className="navbar__contents__value">
+                    <button onClick={googleSignOut} className="navbar__contents__value padding-none">
                       Sign Out
                     </button>
                     {currentUser?.userType === "admin" ? (
                       <>
-                        |
+                        <span>|</span>
                         <button
-                          className="navbar__contents__value"
+                          className="navbar__contents__value padding-none"
                           onClick={() => {
-                            navigate("/admin/home");
+                            navigate("/admin");
                           }}
                         >
                           Go to
@@ -143,11 +143,11 @@ const Header = () => {
                       </>
                     ) : (
                       <>
-                        |
+                        <span>|</span>
                         <button
-                          className="navbar__contents__value"
+                          className="navbar__contents__value padding-none"
                           onClick={() => {
-                            navigate("/user/home");
+                            navigate("/user");
                           }}
                         >
                           Go to
@@ -156,7 +156,7 @@ const Header = () => {
                     )}
                   </>
                 ) : (
-                  <div className="navbar__contents__value" onClick={googleSignIn}>
+                  <div className="navbar__contents__value padding-none" onClick={googleSignIn}>
                     Login with Google
                   </div>
                 )}

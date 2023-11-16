@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 import "./index.css";
-import StoryPic from "../../assets/images/storypic.png";
+import StoryPic from "../../assets/images/storypic.jpeg";
 import CssAnimations from "../../utils/animations";
 
 const Story = ({ id }) => {
   const currentScreenHeight = window.innerHeight;
   useEffect(() => {
     window.addEventListener("scroll", (e) => {
-      CssAnimations.textAppearOnScrollMethod(e, ".revealhorizontal", 200, "revealhorizontalShow");
+      CssAnimations.textAppearOnScrollMethod(e, ".revealOnScroll", 200, "revealOnScroll__active");
     });
     return () => {
       window.removeEventListener("scroll", (e) => {
-        CssAnimations.textAppearOnScrollMethod(e, ".revealhorizontal", 200, "revealhorizontalShow");
+        CssAnimations.textAppearOnScrollMethod(e, ".revealOnScroll", 200, "revealOnScroll__active");
       });
     };
   }, [currentScreenHeight]);
@@ -28,7 +28,7 @@ const Story = ({ id }) => {
   return (
     <section id={id} className="story">
       <div className="storycontainer">
-        <div className="revealhorizontal">
+        <div className="revealOnScroll">
           <h6>Our Story</h6>
           <p>We believe in the trans-formative power of passion, knowledge, and collaboration. We are not just an organization, we are a movement of medical students, professionals, and experts united by a common vision - to redefine healthcare excellence. Here, we build a community that threads through all the domains of healthcare and observe the incantation that this nexus would bring forth</p>
         </div>

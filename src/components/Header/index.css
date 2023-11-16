@@ -1,6 +1,6 @@
 #header {
   width: 100%;
-  transition: all 0.4s ease;
+  transition: all 0.6s ease;
   background: transparent;
   z-index: 999;
   position: fixed;
@@ -17,6 +17,7 @@
   align-items: center;
   gap: 30px;
   color: #fff;
+  margin: 0px;
   padding: 0px 30px;
 }
 .navbar__content__container .navbar__contents {
@@ -24,7 +25,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 30px;
-  margin: 60px auto;
+  margin: 20px auto;
 }
 .navbar__contents__list {
   display: inline-block;
@@ -65,12 +66,17 @@
 }
 .brand {
   height: 80px;
-  padding: 20px 40px;
+  padding: 10px 40px;
   width: auto;
 }
 .close {
   display: flex;
   justify-content: flex-end !important;
+}
+.header__useractions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
 }
 @media (max-width: 1400px) {
   .brand {

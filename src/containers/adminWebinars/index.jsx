@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { TextField, Button, Container, Typography, Card, CardContent, CardActions, CardMedia, Box, Grid, LinearProgress } from "@mui/material";
+import { TextField, Button, Container, Typography, Card, CardContent, CardActions, CardMedia, Box, Grid } from "@mui/material";
 import { getFileURL, addData, getData, deleteData } from "../../helpers/firebaseHelper";
 import { useForm } from "react-hook-form";
+import Loader from "../../components/Loader";
 
 export function WebinarCard({ webinarHeader, webinarDate, webinarStarttime, webinarDescription, webinarImage, webinarSpeaker, uid, getWebinars }) {
   return (
@@ -21,6 +22,7 @@ export function WebinarCard({ webinarHeader, webinarDate, webinarStarttime, webi
       </CardContent>
       <CardActions>
         <Button
+          variant="contained"
           size="small"
           onClick={async () => {
             await deleteData("webinars", uid);
@@ -83,7 +85,7 @@ const AdminWebinars = () => {
   return (
     <>
       {loader ? (
-        <LinearProgress variant="determinate" sx={{ height: "6px" }} />
+        <Loader />
       ) : (
         <>
           <Container component="main" sx={{ my: 5 }}>

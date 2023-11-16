@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { TextField, Button, Container, Typography, Card, CardContent, CardActions, CardMedia, Box, Grid, LinearProgress } from "@mui/material";
+import { TextField, Button, Container, Typography, Card, CardContent, CardActions, CardMedia, Box, Grid } from "@mui/material";
 import { getFileURL, addData, getData, deleteData } from "../../helpers/firebaseHelper";
 import { useForm } from "react-hook-form";
+import Loader from "../../components/Loader";
 
 export function EventCard({ eventName, eventDate, eventTime, eventDescription, eventImage, eventLocation, uid, getEventsData }) {
   return (
@@ -22,6 +23,7 @@ export function EventCard({ eventName, eventDate, eventTime, eventDescription, e
       <CardActions>
         <Button
           size="small"
+          variant="contained"
           onClick={async () => {
             await deleteData("events", uid);
             getEventsData();
@@ -81,7 +83,7 @@ const AdminEvents = () => {
   return (
     <>
       {loader ? (
-        <LinearProgress variant="determinate" sx={{ height: "6px" }} />
+        <Loader />
       ) : (
         <>
           <Container component="section" sx={{ my: 5 }}>

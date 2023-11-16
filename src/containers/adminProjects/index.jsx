@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { TextField, Button, Container, Typography, Card, CardContent, CardActions, CardMedia, Box, Grid, LinearProgress } from "@mui/material";
+import { TextField, Button, Container, Typography, Card, CardContent, CardActions, CardMedia, Box, Grid, Select, MenuItem, Chip } from "@mui/material";
 import { getFileURL, addData, getData, deleteData } from "../../helpers/firebaseHelper";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import Loader from "../../components/Loader";
 
-export function ProjectCards({ projectName, projectDescription, projectImage, uid, getProjects }) {
+export function ProjectCards({ projectName, projectDescription, projectImage, uid, getProjects, projectStatus }) {
   return (
     <Card sx={{ width: "100%" }}>
       <CardMedia sx={{ height: 150 }} image={projectImage} title={projectName} />
@@ -15,8 +17,9 @@ export function ProjectCards({ projectName, projectDescription, projectImage, ui
           {projectDescription}
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions sx={{ justifyContent: "space-between", alignItems: "center" }}>
         <Button
+          variant="contained"
           size="small"
           onClick={async () => {
             await deleteData("projects", uid);
@@ -25,6 +28,7 @@ export function ProjectCards({ projectName, projectDescription, projectImage, ui
         >
           Delete
         </Button>
+        <Chip label={projectStatus} variant="outlined" sx={{ border: projectStatus === "Not Started" ? "2px solid blue" : projectStatus === "InProgress" ? "2px solid yellow" : "2px solid green", fontWeight: "600", letterSpacing: "0.02em" }} />
       </CardActions>
     </Card>
   );
@@ -32,7 +36,11 @@ export function ProjectCards({ projectName, projectDescription, projectImage, ui
 
 const AdminProjects = () => {
   const [projects, setProjects] = useState([]);
+  const [realProjects, setRealProjects] = useState([]);
   const [loader, setLoder] = useState(false);
+
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -40,11 +48,23 @@ const AdminProjects = () => {
     formState: { errors },
   } = useForm({ mode: "onChange" });
 
+  const handleFilter = (text) => {
+    if (text === "") {
+      setProjects(realProjects);
+    } else {
+      const getData = realProjects?.filter((items) => {
+        return items?.projectStatus === text;
+      });
+      setProjects(getData);
+    }
+  };
+
   const getProjects = async () => {
     setLoder(true);
     await getData("projects")
       .then((res) => {
         setProjects(res);
+        setRealProjects(res);
         setLoder(false);
       })
       .catch(() => {
@@ -56,7 +76,6 @@ const AdminProjects = () => {
   const handleProjectSubmit = async (data) => {
     setLoder(true);
     const payload = { ...data, projectImage: await getFileURL(data?.projectImage[0], "projects") };
-    // console.log(payload);
     await addData("projects", payload)
       .then(() => {
         setLoder(false);
@@ -65,6 +84,7 @@ const AdminProjects = () => {
       })
       .catch(() => {
         setLoder(false);
+        navigate("/");
         alert("Something went wrong");
       });
   };
@@ -76,7 +96,7 @@ const AdminProjects = () => {
   return (
     <>
       {loader ? (
-        <LinearProgress variant="determinate" sx={{ height: "6px" }} />
+        <Loader />
       ) : (
         <>
           <Container component="main" sx={{ my: 5 }}>
@@ -132,6 +152,22 @@ const AdminProjects = () => {
 
               <Box margin={"20px 0px"}>
                 <Typography variant="body1" margin={"0px"} color={"grey"}>
+                  Project Status
+                </Typography>
+                <Select variant="outlined" error={errors["projectStatus"]?.message} defaultValue={"Not Started"} fullWidth {...register("projectStatus", { required: "Project Status is required" })}>
+                  <MenuItem value={"Not Started"}>Not Started</MenuItem>
+                  <MenuItem value={"InProgress"}>In-Progress</MenuItem>
+                  <MenuItem value={"Completed"}>Completed</MenuItem>
+                </Select>
+                {errors["projectStatus"]?.message && (
+                  <Typography variant="caption" margin={"0px"} color={"red"}>
+                    {errors["projectStatus"]?.message}
+                  </Typography>
+                )}
+              </Box>
+
+              <Box margin={"20px 0px"}>
+                <Typography variant="body1" margin={"0px"} color={"grey"}>
                   Project Link
                 </Typography>
                 <TextField sx={{ margin: "6px 0px" }} type="url" variant="outlined" error={errors["projectLink"]?.message} fullWidth {...register("projectLink", { required: "Project Link is required" })} />
@@ -151,6 +187,43 @@ const AdminProjects = () => {
             <Typography fontSize={"26px"} fontWeight={"600"} margin={"20px 0px"} variant="h5">
               Manage Projects
             </Typography>
+            <Box margin={"30px 0px"} flexWrap={"wrap"} alignItems={"center"} display={"flex"} gap={"10px"}>
+              <Button
+                variant="outlined"
+                sx={{ borderColor: "blue" }}
+                onClick={() => {
+                  handleFilter("Not Started");
+                }}
+              >
+                Not Started
+              </Button>
+              <Button
+                variant="outlined"
+                sx={{ borderColor: "blue" }}
+                onClick={() => {
+                  handleFilter("InProgress");
+                }}
+              >
+                In Progress
+              </Button>
+              <Button
+                variant="outlined"
+                sx={{ borderColor: "blue" }}
+                onClick={() => {
+                  handleFilter("Completed");
+                }}
+              >
+                Completed
+              </Button>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  handleFilter("");
+                }}
+              >
+                Clear Filter
+              </Button>
+            </Box>
             <Grid container alignItems={"stretch"} spacing={3}>
               {projects.map((projects, index) => (
                 <Grid item={true} key={index} lg={4} md={6} xs={12}>

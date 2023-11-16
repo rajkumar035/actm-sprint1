@@ -1,8 +1,8 @@
 import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import React, { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { auth } from "./../config/firebaseConfig";
 import { AdminMails } from "./../App";
-import { Navigate } from "react-router-dom";
 
 const GoogleAuthContext = React.createContext();
 export const useGoogleAuth = () => {
@@ -10,6 +10,7 @@ export const useGoogleAuth = () => {
 };
 
 const GoogleAuthenticationProvider = ({ children }) => {
+  const naviagte = useNavigate();
   const [currentUser, setCurrentUser] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -20,9 +21,20 @@ const GoogleAuthenticationProvider = ({ children }) => {
     try {
       setError("");
       setLoading(true);
-      await signInWithPopup(auth, gAuthProvider);
-    } catch {
-      setError("Failed To SignIn");
+      await signInWithPopup(auth, gAuthProvider)
+        .then(() => {
+          const user = auth.currentUser;
+          if (AdminMails.includes(user.email)) {
+            naviagte("/admin");
+          } else {
+            naviagte("/user");
+          }
+        })
+        .catch((err) => {
+          return err;
+        });
+    } catch (err) {
+      setError("Failed To SignIn", err);
     }
   };
 
@@ -39,24 +51,23 @@ const GoogleAuthenticationProvider = ({ children }) => {
     setLoading(false);
   };
 
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        const userType = AdminMails.includes(user.email) ? "admin" : "user";
-        const usr = { ...user, userType };
-        setCurrentUser(usr);
-        setPending(false);
-        if (userType === "admin") {
-          <Navigate to={"/admin/home"} />;
+  useEffect(
+    () =>
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          const usr = {
+            ...user,
+            userType: AdminMails.includes(user.email) ? "admin" : "user",
+          };
+          setCurrentUser(usr);
+          setPending(false);
         } else {
-          <Navigate to={"/user/home"} />;
+          setCurrentUser(user);
+          setPending(false);
         }
-      } else {
-        setCurrentUser(user);
-        setPending(false);
-      }
-    });
-  }, []);
+      }),
+    []
+  );
 
   const value = {
     currentUser,

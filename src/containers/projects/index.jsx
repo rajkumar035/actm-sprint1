@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 import AppPagination from "../../components/Pagination";
 import nodata from "../../assets/images/nodata.jpg";
 import { getData } from "../../helpers/firebaseHelper";
-import { Box } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
 
 const ProjectCard = (props) => {
   const { projectImage, projectName, projectDescription, projectLink } = props;
@@ -28,26 +28,59 @@ const ProjectCard = (props) => {
 };
 
 const Projects = ({ id }) => {
-  const [projectData, setprojectData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const projectsPerPage = 3;
+  const [projectData, setprojectData] = useState({
+    "Not Started": [],
+    InProgess: [],
+    Completed: [],
+  });
+  const [currentPage, setCurrentPage] = useState({
+    "Not Started": 1,
+    InProgess: 1,
+    Completed: 1,
+  });
+
+  const theme = useTheme();
+  const isMobileScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const projectsPerPage = isMobileScreen ? 1 : 3;
+  const noDatas = projectData["Not Started"].length === 0 && projectData.InProgess.length === 0 && projectData.Completed.length === 0;
 
   useEffect(() => {
     getData("projects")
       .then((res) => {
-        setprojectData(res);
+        const getProgressData = res?.filter((items) => {
+          return items?.projectStatus === "InProgress";
+        });
+        const getCompletedData = res?.filter((items) => {
+          return items?.projectStatus === "Completed";
+        });
+        const getNotCompletedData = res?.filter((items) => {
+          return items?.projectStatus === "Not Started";
+        });
+        setprojectData({
+          "Not Started": getNotCompletedData,
+          InProgess: getProgressData,
+          Completed: getCompletedData,
+        });
       })
       .catch((err) => {
         console.error(err);
       });
   }, []);
 
-  const indexOfLastData = currentPage * projectsPerPage;
-  const indexOfFirstData = indexOfLastData - projectsPerPage;
-  const curretnWebinar = projectData.slice(indexOfFirstData, indexOfLastData) || [];
+  const indexofLastNotCompletedData = currentPage["Not Started"] * projectsPerPage;
+  const indexOfFirstNotCompletedData = indexofLastNotCompletedData - projectsPerPage;
+  const currentNotCompletedProjects = projectData["Not Started"].slice(indexOfFirstNotCompletedData, indexofLastNotCompletedData) || [];
 
-  const handlePageChange = (event, value) => {
-    setCurrentPage(value);
+  const indexofInProgressData = currentPage.InProgess * projectsPerPage;
+  const indexOfInProgressData = indexofInProgressData - projectsPerPage;
+  const currentInProgresProjects = projectData["InProgess"].slice(indexOfInProgressData, indexofInProgressData) || [];
+
+  const indexofCompletedData = currentPage.Completed * projectsPerPage;
+  const indexOfFirstCompletedData = indexofCompletedData - projectsPerPage;
+  const currentCompletedProjects = projectData["Not Started"].slice(indexOfFirstCompletedData, indexofCompletedData) || [];
+
+  const handlePageChange = (event, value, key) => {
+    setCurrentPage((prev) => ({ ...prev, [key]: value }));
   };
 
   return (
@@ -56,22 +89,90 @@ const Projects = ({ id }) => {
         <h6>All Projects</h6>
         <div className="divider" />
       </div>
-      <div className="projectsContainer_cards">
-        <Grid container spacing={4}>
-          {curretnWebinar.length === 0 ? (
+      <div className="projectContainer__Subsections">
+        {noDatas ? (
+          <div className="nodata__Image__Align">
             <img alt="nodata" src={nodata} className="nodata__image " />
-          ) : (
-            curretnWebinar.map((items, index) => {
-              return (
-                <Grid item={true} key={index} lg={4} md={4} sm={12} xs={12}>
-                  <ProjectCard {...items} />
-                </Grid>
-              );
-            })
-          )}
-        </Grid>
+          </div>
+        ) : (
+          <>
+            {projectData["Not Started"]?.length > 0 && (
+              <>
+                <h6>Not Started yet</h6>
+                <div className="projectsContainer_cards">
+                  <Grid container spacing={4}>
+                    {currentNotCompletedProjects.map((items, index) => {
+                      return (
+                        <Grid item={true} key={index} lg={4} md={4} sm={12} xs={12}>
+                          <ProjectCard {...items} />
+                        </Grid>
+                      );
+                    })}
+                  </Grid>
+                </div>
+                <AppPagination
+                  count={projectsPerPage}
+                  data={projectData["Not Started"]}
+                  currentindex={currentPage["Not Started"]}
+                  handlePageChange={(e, v) => {
+                    handlePageChange(e, v, "Not Started");
+                  }}
+                />
+              </>
+            )}
+            {projectData["InProgess"]?.length > 0 && (
+              <>
+                <div className="content__divider" />
+                <h6>In Progress</h6>
+                <div className="projectsContainer_cards">
+                  <Grid container spacing={4}>
+                    {currentInProgresProjects.map((items, index) => {
+                      return (
+                        <Grid item={true} key={index} lg={4} md={4} sm={12} xs={12}>
+                          <ProjectCard {...items} />
+                        </Grid>
+                      );
+                    })}
+                  </Grid>
+                </div>
+                <AppPagination
+                  count={projectsPerPage}
+                  data={projectData.InProgess}
+                  currentindex={currentPage.InProgess}
+                  handlePageChange={(e, v) => {
+                    handlePageChange(e, v, "InProgess");
+                  }}
+                />
+              </>
+            )}
+            {projectData["Completed"]?.length > 0 && (
+              <>
+                <div className="content__divider" />
+                <h6>Completed</h6>
+                <div className="projectsContainer_cards">
+                  <Grid container spacing={4}>
+                    {currentCompletedProjects.map((items, index) => {
+                      return (
+                        <Grid item={true} key={index} lg={4} md={4} sm={12} xs={12}>
+                          <ProjectCard {...items} />
+                        </Grid>
+                      );
+                    })}
+                  </Grid>
+                </div>
+                <AppPagination
+                  count={projectsPerPage}
+                  data={projectData.Completed}
+                  currentindex={currentPage.Completed}
+                  handlePageChange={(e, v) => {
+                    handlePageChange(e, v, "Completed");
+                  }}
+                />
+              </>
+            )}
+          </>
+        )}
       </div>
-      <AppPagination count={projectsPerPage} data={projectData} currentindex={currentPage} handlePageChange={handlePageChange} />
     </section>
   );
 };

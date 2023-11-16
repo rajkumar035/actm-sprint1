@@ -1,8 +1,7 @@
-import React from "react";
-import { useState } from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { useGoogleAuth } from "./contexts/GoogleAuthContext";
-import { Box, Container, LinearProgress, Toolbar } from "@mui/material";
+import { Container, LinearProgress } from "@mui/material";
 
 import AdminWebinars from "./containers/adminWebinars";
 import AdminEvents from "./containers/adminEvents";
@@ -29,6 +28,7 @@ const SuspenseLoader = () => {
     </div>
   );
 };
+
 export const AdminMails = ["vasanthvdev@gmail.com", "vasanthnaveen2011@gmail.com", "rajkumardhandapani03@gmail.com"];
 export const PrivateRoute = ({ children, userType }) => {
   const { currentUser, googleSignOut } = useGoogleAuth();
@@ -42,11 +42,20 @@ export const PrivateRoute = ({ children, userType }) => {
 
 function App() {
   window.addEventListener("mousemove", CssAnimations.customCursorOnMOuseMoveMethod);
+  const { pathname } = useLocation();
+  const isStatic = !pathname.includes("admin") && !pathname.includes("user");
+
+  console.log(pathname, !pathname.includes("admin"));
+
   return (
     <React.Suspense fallback={<SuspenseLoader />}>
       <article>
-        <span className="cursor" />
-        <span className="cursor2" />
+        {isStatic && (
+          <>
+            <span className="cursor" />
+            <span className="cursor2" />
+          </>
+        )}
         <Routes>
           <Route
             path="/"
@@ -72,7 +81,6 @@ function App() {
                   <Routes>
                     <Route
                       index
-                      path="/home"
                       element={
                         <PrivateRoute userType="admin">
                           <AdminDashboard />
@@ -91,14 +99,10 @@ function App() {
             path="/user/*"
             element={
               <Container disableGutters>
-                <Box>
-                  <Toolbar>
-                    <AdminHeader />
-                  </Toolbar>
+                <AdminHeader>
                   <Routes>
                     <Route
                       index
-                      path="/home"
                       element={
                         <PrivateRoute userType="user">
                           <UserDashboard />
@@ -106,7 +110,7 @@ function App() {
                       }
                     />
                   </Routes>
-                </Box>
+                </AdminHeader>
               </Container>
             }
           />
