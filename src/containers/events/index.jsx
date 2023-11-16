@@ -7,6 +7,7 @@ import dateico from "../../assets/svg/date.svg";
 import AppPagination from "../../components/Pagination";
 import nodata from "../../assets/images/nodata.jpg";
 import { getData } from "../../helpers/firebaseHelper";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 const EventCard = (props) => {
   const { eventImage, eventName, eventLocation, eventEndtime, eventStarttime, eventDate, eventCTA, eventDescription } = props;
@@ -46,7 +47,9 @@ const EventCard = (props) => {
 const Events = ({ id }) => {
   const [eventData, setEventData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const eventsPerPage = 3;
+  const theme = useTheme();
+  const isExtraSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const eventsPerPage = isExtraSmallScreen ? 1 : 3;
 
   useEffect(() => {
     getData("events")

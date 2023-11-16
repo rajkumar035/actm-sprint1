@@ -45,8 +45,6 @@ function App() {
   const { pathname } = useLocation();
   const isStatic = !pathname.includes("admin") && !pathname.includes("user");
 
-  console.log(pathname, !pathname.includes("admin"));
-
   return (
     <React.Suspense fallback={<SuspenseLoader />}>
       <article>

@@ -72,7 +72,7 @@ const Offers = ({ id }) => {
         <Grid container spacing={isMobileScreen ? 4 : 5} justifyContent={"center"} alignItems={"stretch"}>
           {contents.map((items, index) => {
             return (
-              <Grid item={true} className="revealhorizontal" key={index} lg={3} md={4} sm={6} xs={12}>
+              <Grid item={true} className="revealhorizontal" key={index} lg={3} md={6} sm={6} xs={12}>
                 <OfferCard {...items} />
               </Grid>
             );

@@ -40,7 +40,7 @@ const Projects = ({ id }) => {
   });
 
   const theme = useTheme();
-  const isMobileScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobileScreen = useMediaQuery(theme.breakpoints.down("md"));
   const projectsPerPage = isMobileScreen ? 1 : 3;
   const noDatas = projectData["Not Started"].length === 0 && projectData.InProgess.length === 0 && projectData.Completed.length === 0;
 
@@ -103,7 +103,7 @@ const Projects = ({ id }) => {
                   <Grid container spacing={4}>
                     {currentNotCompletedProjects.map((items, index) => {
                       return (
-                        <Grid item={true} key={index} lg={4} md={4} sm={12} xs={12}>
+                        <Grid item={true} key={index} lg={4} md={6} sm={12} xs={12}>
                           <ProjectCard {...items} />
                         </Grid>
                       );
@@ -128,7 +128,7 @@ const Projects = ({ id }) => {
                   <Grid container spacing={4}>
                     {currentInProgresProjects.map((items, index) => {
                       return (
-                        <Grid item={true} key={index} lg={4} md={4} sm={12} xs={12}>
+                        <Grid item={true} key={index} lg={4} md={6} sm={12} xs={12}>
                           <ProjectCard {...items} />
                         </Grid>
                       );
@@ -153,7 +153,7 @@ const Projects = ({ id }) => {
                   <Grid container spacing={4}>
                     {currentCompletedProjects.map((items, index) => {
                       return (
-                        <Grid item={true} key={index} lg={4} md={4} sm={12} xs={12}>
+                        <Grid item={true} key={index} lg={4} md={6} sm={12} xs={12}>
                           <ProjectCard {...items} />
                         </Grid>
                       );

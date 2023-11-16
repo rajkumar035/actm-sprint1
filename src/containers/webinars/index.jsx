@@ -7,6 +7,7 @@ import dateico from "../../assets/svg/dateblack.svg";
 import AppPagination from "../../components/Pagination";
 import nodata from "../../assets/images/nodata.jpg";
 import { getData } from "../../helpers/firebaseHelper";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 const WebinarCard = (props) => {
   const { webinarImage, webinarHeader, webinarRegisterLink, webinarSpeaker, webinarStarttime, webinarEndtime, webinarDate, webinarDescription } = props;
@@ -47,7 +48,9 @@ const WebinarCard = (props) => {
 const Webinars = ({ id }) => {
   const [webinarData, setWebinarData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const webinarsPerPage = 2;
+  const theme = useTheme();
+  const isMobileScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const webinarsPerPage = isMobileScreen ? 1 : 2;
 
   useEffect(() => {
     getData("webinars")
