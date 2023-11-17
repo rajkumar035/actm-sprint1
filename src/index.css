@@ -128,12 +128,6 @@ a {
   text-decoration: none;
 }
 
-.nodata__image {
-  height: 500px;
-  width: 500px;
-  margin: 20px auto;
-}
-
 @media screen and (max-width: 900px) {
   .cursor,
   .cursor2 {
@@ -148,6 +142,11 @@ a {
     left: -30px;
     cursor: pointer;
     display: none;
+  }
+  .nodata__image {
+    height: 300px;
+    width: auto;
+    margin: 20px auto;
   }
 }
 

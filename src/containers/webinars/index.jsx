@@ -78,19 +78,19 @@ const Webinars = ({ id }) => {
         <p>Our webinars offer a front-row seat to discussions on cutting-edge medical breakthroughs, emerging trends, and thought-provoking ideas that will challenge your perspective</p>
       </div>
       <div className="webinarContainer_cards">
-        <Grid container spacing={6} justifyContent={"center"} flexGrow={1} alignItems={"stretch"}>
-          {curretnWebinar.length === 0 ? (
-            <img alt="nodata" src={nodata} className="nodata__image " />
-          ) : (
-            curretnWebinar.map((items, index) => {
+        {curretnWebinar.length === 0 ? (
+          <img alt="nodata" src={nodata} className="nodata__image " />
+        ) : (
+          <Grid container spacing={6} justifyContent={"center"} flexGrow={1} alignItems={"stretch"}>
+            {curretnWebinar.map((items, index) => {
               return (
                 <Grid item={true} key={index} lg={6} md={6} xs={12}>
                   <WebinarCard {...items} />
                 </Grid>
               );
-            })
-          )}
-        </Grid>
+            })}
+          </Grid>
+        )}
       </div>
       <AppPagination count={webinarsPerPage} data={webinarData} currentindex={currentPage} handlePageChange={handlePageChange} />
     </section>
