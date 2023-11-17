@@ -117,6 +117,12 @@ a {
   cursor: pointer;
 }
 
+.nodata__image {
+  height: 500px;
+  width: 500px;
+  margin: 20px auto;
+}
+
 .cursor2 {
   top: -10px;
   left: -10px;
