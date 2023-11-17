@@ -98,7 +98,7 @@ const Projects = ({ id }) => {
           <>
             {projectData["Not Started"]?.length > 0 && (
               <>
-                <h6>Not Started yet</h6>
+                <h6>Upcomings</h6>
                 <div className="projectsContainer_cards">
                   <Grid container spacing={4}>
                     {currentNotCompletedProjects.map((items, index) => {
