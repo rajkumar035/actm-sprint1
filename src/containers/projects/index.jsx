@@ -100,7 +100,7 @@ const Projects = ({ id }) => {
               <>
                 <h6>Upcomings</h6>
                 <div className="projectsContainer_cards">
-                  <Grid container spacing={4}>
+                  <Grid container spacing={4} justifyContent={"center"} flexGrow={1} alignItems={"stretch"}>
                     {currentNotCompletedProjects.map((items, index) => {
                       return (
                         <Grid item={true} key={index} lg={4} md={6} sm={12} xs={12}>
@@ -125,7 +125,7 @@ const Projects = ({ id }) => {
                 <div className="content__divider" />
                 <h6>In Progress</h6>
                 <div className="projectsContainer_cards">
-                  <Grid container spacing={4}>
+                  <Grid container spacing={4} justifyContent={"center"} flexGrow={1} alignItems={"stretch"}>
                     {currentInProgresProjects.map((items, index) => {
                       return (
                         <Grid item={true} key={index} lg={4} md={6} sm={12} xs={12}>
@@ -150,7 +150,7 @@ const Projects = ({ id }) => {
                 <div className="content__divider" />
                 <h6>Completed</h6>
                 <div className="projectsContainer_cards">
-                  <Grid container spacing={4}>
+                  <Grid container spacing={4} justifyContent={"center"} flexGrow={1} alignItems={"stretch"}>
                     {currentCompletedProjects.map((items, index) => {
                       return (
                         <Grid item={true} key={index} lg={4} md={6} sm={12} xs={12}>

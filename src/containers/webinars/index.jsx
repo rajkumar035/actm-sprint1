@@ -78,7 +78,7 @@ const Webinars = ({ id }) => {
         <p>Our webinars offer a front-row seat to discussions on cutting-edge medical breakthroughs, emerging trends, and thought-provoking ideas that will challenge your perspective</p>
       </div>
       <div className="webinarContainer_cards">
-        <Grid container spacing={6} display={"flex"} justifyContent={"center"} flexGrow={1} alignItems={"stretch"}>
+        <Grid container spacing={6} justifyContent={"center"} flexGrow={1} alignItems={"stretch"}>
           {curretnWebinar.length === 0 ? (
             <img alt="nodata" src={nodata} className="nodata__image " />
           ) : (

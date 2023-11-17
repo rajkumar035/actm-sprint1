@@ -77,7 +77,7 @@ const Events = ({ id }) => {
         <p>Compete in symposiums and contests that celebrate innovation and excellence. Win accolades that will bolster your career and open doors to new opportunities</p>
       </div>
       <div className="eventsContainer_cards">
-        <Grid container spacing={6}>
+        <Grid container spacing={6} justifyContent={"center"} flexGrow={1} alignItems={"stretch"}>
           {currentEvents.length === 0 ? (
             <img alt="nodata" src={nodata} className="nodata__image " />
           ) : (
