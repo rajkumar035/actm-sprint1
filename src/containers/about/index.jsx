@@ -28,7 +28,7 @@ const Story = ({ id }) => {
   return (
     <section id={id} className="story">
       <div className="storycontainer">
-        <div className="revealOnScroll">
+        <div className="storycontainer__overlay revealOnScroll">
           <h6>Our Story</h6>
           <p>We believe in the trans-formative power of passion, knowledge, and collaboration. We are not just an organization, we are a movement of medical students, professionals, and experts united by a common vision - to redefine healthcare excellence. Here, we build a community that threads through all the domains of healthcare and observe the incantation that this nexus would bring forth</p>
         </div>

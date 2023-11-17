@@ -9,8 +9,44 @@
   background-position: top;
   background-size: cover;
   position: relative;
+  background-image: url(../../assets/images/ourStory.jpg);
   text-align: center;
-  padding: 40px 50px;
+  -webkit-animation: slidein 40s;
+  animation: slidein 40s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+
+.storycontainer__overlay {
+  padding: 80px 50px;
+  background: rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+@-webkit-keyframes slidein {
+  from {
+    background-position: top;
+    background-size: 3000px;
+  }
+  to {
+    background-position: -100px 0px;
+    background-size: 2750px;
+  }
+}
+
+@keyframes slidein {
+  from {
+    background-position: top;
+    background-size: 3000px;
+  }
+  to {
+    background-position: -100px 0px;
+    background-size: 2750px;
+  }
 }
 
 .storycontainer h6 {
@@ -113,14 +149,26 @@
   .aboutImage {
     display: none;
   }
+  .storycontainer {
+    padding: 65px 25px;
+  }
+  .storycontainer__overlay {
+    padding: 80px 30px;
+  }
+  .storycontainer h6 {
+    font-size: 26px;
+    letter-spacing: 0.02em;
+  }
+  .storycontainer p {
+    letter-spacing: 0.04em;
+    font-size: 16px;
+    line-height: 30px;
+  }
   .aboutContainer__image {
     display: block;
   }
   .aboutcontainer {
     background: none;
     padding: 50px 30px;
-  }
-  .storycontainer {
-    padding: 80px 30px;
   }
 }

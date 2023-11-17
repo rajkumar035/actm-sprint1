@@ -29,7 +29,7 @@ const SuspenseLoader = () => {
   );
 };
 
-export const AdminMails = ["vasanthvdev@gmail.com", "vasanthnaveen2011@gmail.com", "rajkumardhandapani03@gmail.com"];
+export const AdminMails = ["vasanthvdev@gmail.com", "vasanthnaveen2011@gmail.com", "rajkumardhandapani03@gmail.com", "theashvathpillai1911@gmail.com", "rrwalwaikar@gmail.com", "theactm.org@gmail.com"];
 export const PrivateRoute = ({ children, userType }) => {
   const { currentUser, googleSignOut } = useGoogleAuth();
   const [adminEmails] = useState(AdminMails);
