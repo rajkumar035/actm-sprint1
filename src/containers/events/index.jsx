@@ -78,7 +78,9 @@ const Events = ({ id }) => {
       </div>
       <div className="eventsContainer_cards">
         {currentEvents.length === 0 ? (
-          <img alt="nodata" src={nodata} className="nodata__image " />
+          <div className="nodata__Image__Align">
+            <img alt="nodata" src={nodata} className="nodata__image " />
+          </div>
         ) : (
           <Grid container spacing={6} justifyContent={"center"} flexGrow={1} alignItems={"stretch"}>
             {currentEvents.map((items, index) => (

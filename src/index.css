@@ -103,6 +103,12 @@ a {
   opacity: 1;
 }
 
+.nodata__image {
+  height: 500px;
+  width: 500px;
+  margin: 20px auto;
+}
+
 .cursor,
 .cursor2 {
   position: absolute;
@@ -115,12 +121,6 @@ a {
   top: -30px;
   left: -30px;
   cursor: pointer;
-}
-
-.nodata__image {
-  height: 500px;
-  width: 500px;
-  margin: 20px auto;
 }
 
 .cursor2 {
@@ -158,4 +158,8 @@ a {
 
 .padding-none {
   padding: 0px !important;
+}
+
+.nodata__Image__Align {
+  text-align: center;
 }
