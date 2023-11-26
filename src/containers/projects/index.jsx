@@ -10,7 +10,7 @@ const ProjectCard = (props) => {
   const { projectImage, projectName, projectDescription, projectLink } = props;
   return (
     <Box component={"div"} className="project__Cards">
-      <img src={projectImage} alt={projectImage} />
+      <img height={"460px"} width={"100"} loading="lazy" src={projectImage} alt={projectImage} />
       <div className="project__Content__Overlay">
         <h6>{projectName}</h6>
         <p>{projectDescription}</p>
@@ -92,7 +92,7 @@ const Projects = ({ id }) => {
       <div className="projectContainer__Subsections">
         {noDatas ? (
           <div className="nodata__Image__Align">
-            <img alt="nodata" src={nodata} className="nodata__image " />
+            <img alt="nodata" height={"100"} width={"100"} loading="lazy" src={nodata} className="nodata__image " />
           </div>
         ) : (
           <>

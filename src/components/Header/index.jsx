@@ -1,10 +1,10 @@
-import './index.css';
-import { useState } from 'react';
-import close from '../../assets/svg/close.svg';
-import menu from '../../assets/svg/menu.svg';
-import { useGoogleAuth } from '../../contexts/GoogleAuthContext';
-import { useNavigate } from 'react-router-dom';
-const logo = require('../../assets/images/logo.png');
+import "./index.css";
+import { useState } from "react";
+import close from "../../assets/svg/close.svg";
+import menu from "../../assets/svg/menu.svg";
+import { useGoogleAuth } from "../../contexts/GoogleAuthContext";
+import { useNavigate } from "react-router-dom";
+const logo = require("../../assets/images/logo.png");
 
 const Header = () => {
   const navigate = useNavigate();
@@ -17,90 +17,91 @@ const Header = () => {
 
   const { currentUser, googleSignIn, googleSignOut } = useGoogleAuth();
 
-  document.addEventListener('scroll', (e) => {
-    const getHeader = document.querySelector('#header');
+  document.addEventListener("scroll", (e) => {
+    const getHeader = document.querySelector("#header");
     if (getHeader) {
       if (window.scrollY > 700) {
-        getHeader.classList.add('dark__header');
+        getHeader.classList.add("dark__header");
       } else {
-        getHeader.classList.remove('dark__header');
+        getHeader.classList.remove("dark__header");
       }
     }
   });
 
   return (
-    <nav id='header'>
-      <div class='logo'>
-        <img className='brand' src={logo} alt='logo' />
+    <nav id="header">
+      <div className="logo">
+        <div className="blur__logo">
+          <img height={"100"} width={"100"} className="brand" loading="lazy" src={logo} alt="logo" />
+        </div>
         <p>Academy of Clinical Translational Medicine</p>
       </div>
-      <input type='checkbox' id='check' onClick={handleNavState} />
+      <input type="checkbox" id="check" onClick={handleNavState} />
       {!state && (
-        <label for='check' className='checkbtn'>
-          <img alt='' src={menu} />
+        <label for="check" className="checkbtn">
+          <img loading="eager" height={"100"} width={"100"} alt="" src={menu} />
         </label>
       )}
-      <ul className='navbar__content__container'>
+      <ul className="navbar__content__container">
         {state && (
-          <label for='check' className='checkbtn'>
-            <div className='close'>
-              <img alt='' src={close} />
+          <label for="check" className="checkbtn">
+            <div className="close">
+              <img loading="eager" height={"100"} width={"100"} alt="" src={close} />
             </div>
           </label>
         )}
-        <div className='navbar__contents'>
-          <li className='navbar__contents__list'>
-            <a className='navbar__contents__value' href='#home'>
+        <div className="navbar__contents">
+          <li className="navbar__contents__list">
+            <a title="Navigate__Home" className="navbar__contents__value" href="#home">
               Home
             </a>
           </li>
-          <li className='navbar__contents__list'>
-            <a className='navbar__contents__value' href='#about'>
+          <li className="navbar__contents__list">
+            <a title="Navigate__About" className="navbar__contents__value" href="#about">
               About
             </a>
           </li>
-          <li className='navbar__contents__list'>
-            <a className='navbar__contents__value' href='#events'>
+          <li className="navbar__contents__list">
+            <a title="Navigate__Events" className="navbar__contents__value" href="#events">
               Events
             </a>
           </li>
-          <li className='navbar__contents__list'>
-            <a className='navbar__contents__value' href='#webinars'>
+          <li className="navbar__contents__list">
+            <a title="Navigate__Webinars" className="navbar__contents__value" href="#webinars">
               Webinars
             </a>
           </li>
-          <li className='navbar__contents__list'>
-            <a className='navbar__contents__value' href='#projects'>
+          <li className="navbar__contents__list">
+            <a title="Navigate__Projects" className="navbar__contents__value" href="#projects">
               Projects
             </a>
           </li>
-          <li className='navbar__contents__list'>
-            <a className='navbar__contents__value' href='#offers'>
+          <li className="navbar__contents__list">
+            <a title="Navigate__Offers" className="navbar__contents__value" href="#offers">
               Offers
             </a>
           </li>
-          <li className='navbar__contents__list'>
-            <a className='navbar__contents__value' href='#missions'>
+          <li className="navbar__contents__list">
+            <a title="Navigate__Missions" className="navbar__contents__value" href="#missions">
               Missions
             </a>
           </li>
           {state && (
-            <li className='navbar__contents__list'>
+            <li className="navbar__contents__list">
               {currentUser ? (
-                <div className='header__useractions'>
-                  <button
-                    onClick={googleSignOut}
-                    className='navbar__contents__value padding-none'>
+                <div className="header__useractions">
+                  <button onClick={googleSignOut} className="navbar__contents__value padding-none">
                     Sign Out
                   </button>
-                  {currentUser?.userType === 'admin' ? (
+                  {currentUser?.userType === "admin" ? (
                     <>
                       <span>|</span>
                       <button
-                        className='navbar__contents__value padding-none'
+                        className="navbar__contents__value padding-none"
                         onClick={() => {
-                          navigate('/admin');
-                        }}>
+                          navigate("/admin");
+                        }}
+                      >
                         Go to
                       </button>
                     </>
@@ -108,19 +109,18 @@ const Header = () => {
                     <>
                       <span>|</span>
                       <button
-                        className='navbar__contents__value padding-none'
+                        className="navbar__contents__value padding-none"
                         onClick={() => {
-                          navigate('/user');
-                        }}>
+                          navigate("/user");
+                        }}
+                      >
                         Go to
                       </button>
                     </>
                   )}
                 </div>
               ) : (
-                <div
-                  className='navbar__contents__value padding-none'
-                  onClick={googleSignIn}>
+                <div className="navbar__contents__value padding-none" onClick={googleSignIn}>
                   Login with Google
                 </div>
               )}
@@ -128,22 +128,21 @@ const Header = () => {
           )}
           {!state && (
             <li>
-              <div className='header__useractions'>
+              <div className="header__useractions">
                 {currentUser ? (
                   <>
-                    <button
-                      onClick={googleSignOut}
-                      className='navbar__contents__value padding-none'>
+                    <button onClick={googleSignOut} className="navbar__contents__value padding-none">
                       Sign Out
                     </button>
-                    {currentUser?.userType === 'admin' ? (
+                    {currentUser?.userType === "admin" ? (
                       <>
                         <span>|</span>
                         <button
-                          className='navbar__contents__value padding-none'
+                          className="navbar__contents__value padding-none"
                           onClick={() => {
-                            navigate('/admin');
-                          }}>
+                            navigate("/admin");
+                          }}
+                        >
                           Go to
                         </button>
                       </>
@@ -151,19 +150,18 @@ const Header = () => {
                       <>
                         <span>|</span>
                         <button
-                          className='navbar__contents__value padding-none'
+                          className="navbar__contents__value padding-none"
                           onClick={() => {
-                            navigate('/user');
-                          }}>
+                            navigate("/user");
+                          }}
+                        >
                           Go to
                         </button>
                       </>
                     )}
                   </>
                 ) : (
-                  <div
-                    className='navbar__contents__value padding-none'
-                    onClick={googleSignIn}>
+                  <div className="navbar__contents__value padding-none" onClick={googleSignIn}>
                     Login with Google
                   </div>
                 )}

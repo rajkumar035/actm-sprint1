@@ -14,7 +14,7 @@ const OfferCard = (props) => {
   return (
     <div className="offerCard">
       <div className="offerCard__icon">
-        <img src={icon} alt={header} />
+        <img loading="eager" height={"100"} width={"100"} src={icon} alt={header} />
       </div>
       <div className="offerCard__content">
         <h6>{header}</h6>

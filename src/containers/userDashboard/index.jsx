@@ -1,10 +1,11 @@
 import React from "react";
 import comingsoon from "../../assets/images/coming.jpg";
+import "./index.css";
 
 const UserDashboard = () => {
   return (
-    <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
-      <img alt="comingsoon" src={comingsoon} style={{ height: "250px", width: "max-content" }} />
+    <div className="userDashboard">
+      <img alt="comingsoon" src={comingsoon} height={"250px"} width={"250px"} loading="lazy" />
     </div>
   );
 };

@@ -1,11 +1,27 @@
 .homepage {
-  background: url(../../assets/images/homebg.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
   height: 100vh;
   padding: 0px;
+  position: relative;
   margin: 0px;
+}
+
+.blur__load_home {
+  background: url(../../assets/images/homebgsmall.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  display: block;
+  position: absolute;
+  z-index: -2;
+}
+
+.homepage__img {
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .homepage__layout {

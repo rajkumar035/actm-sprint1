@@ -13,22 +13,22 @@ const WebinarCard = (props) => {
   const { webinarImage, webinarHeader, webinarRegisterLink, webinarSpeaker, webinarStarttime, webinarEndtime, webinarDate, webinarDescription } = props;
   return (
     <div className="webinarcard">
-      <img alt={webinarHeader} src={webinarImage} />
+      <img height={"100"} width={"100"} loading="lazy" alt={webinarHeader} src={webinarImage} />
       <div className="webinarcard__content">
         <h6>{webinarHeader}</h6>
         <div className="divider" />
         <div className="webinarcard_description">{webinarDescription}</div>
         <div className="webinarcard_specifications">
           <div>
-            <img alt="speaker" src={speakerico} />
+            <img height={"100"} width={"100"} loading="eager" alt="speaker" src={speakerico} />
             <h6>{webinarSpeaker}</h6>
           </div>
           <div>
-            <img alt="time" src={timeico} />
+            <img height={"100"} width={"100"} loading="eager" alt="time" src={timeico} />
             <h6>{webinarEndtime + "-" + webinarStarttime}</h6>
           </div>
           <div>
-            <img alt="date" src={dateico} />
+            <img height={"100"} width={"100"} loading="eager" alt="date" src={dateico} />
             <h6>{webinarDate}</h6>
           </div>
         </div>
@@ -80,7 +80,7 @@ const Webinars = ({ id }) => {
       <div className="webinarContainer_cards">
         {curretnWebinar.length === 0 ? (
           <div className="nodata__Image__Align">
-            <img alt="nodata" src={nodata} className="nodata__image " />
+            <img alt="nodata" height={"100"} width={"100"} loading="lazy" src={nodata} className="nodata__image " />
           </div>
         ) : (
           <Grid container spacing={6} justifyContent={"center"} flexGrow={1} alignItems={"stretch"}>

@@ -1,0 +1,11 @@
+.userDashboard {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.userDashboard img {
+  height: 250px;
+  width: auto;
+}

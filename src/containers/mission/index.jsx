@@ -32,7 +32,7 @@ const Mission = ({ id }) => {
                     className="missioncontainer__content mouseHover"
                   >
                     <div>
-                      <img src={left} alt="" />
+                      <img loading="lazy" height={"33"} width={"33"} src={left} alt="" />
                     </div>
                     <h6>{items}</h6>
                   </div>
@@ -56,8 +56,8 @@ const Mission = ({ id }) => {
               <h6>Head Quarters</h6>
               <p>Mumbai, India</p>
             </div>
-            <a href="https://www.bing.com/maps?where=Mumbai%2C%20IN">
-              <img alt="" src={map} />
+            <a title="Location__Map" href="https://www.bing.com/maps?where=Mumbai%2C%20IN">
+              <img height={"100%"} width={"100%"} loading="lazy" alt="map" src={map} />
             </a>
           </div>
         </Grid>
@@ -65,8 +65,8 @@ const Mission = ({ id }) => {
       <footer className="footercontainer">
         <div>
           <h6>Designed and Developed by</h6>
-          <a href="https://vdev.netlify.app/">
-            <img alt="creator" src={brand} />
+          <a title="Creator" href="https://vdev.netlify.app/">
+            <img alt="creator" height={"20"} loading="eager" width={"100"} src={brand} />
           </a>
         </div>
       </footer>

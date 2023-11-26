@@ -13,21 +13,21 @@ const EventCard = (props) => {
   const { eventImage, eventName, eventLocation, eventEndtime, eventStarttime, eventDate, eventCTA, eventDescription } = props;
   return (
     <div className="eventcard">
-      <img alt={eventName} src={eventImage} />
+      <img height={"100"} width={"100"} loading="lazy" alt={eventName} src={eventImage} />
       <div className="eventcard__content">
         <h6>{eventName}</h6>
         <div className="dividerv2" />
         <div className="eventcard_specifications">
           <div>
-            <img loading="lazy" alt="location" src={locationico} />
+            <img height={"100"} width={"100"} loading="eager" alt="location" src={locationico} />
             <h6>{eventLocation}</h6>
           </div>
           <div>
-            <img alt="time" src={timeico} />
+            <img height={"100"} width={"100"} loading="eager" alt="time" src={timeico} />
             <h6>{eventStarttime + "-" + eventEndtime}</h6>
           </div>
           <div>
-            <img alt="date" src={dateico} />
+            <img height={"100"} width={"100"} loading="eager" alt="date" src={dateico} />
             <h6>{eventDate}</h6>
           </div>
         </div>

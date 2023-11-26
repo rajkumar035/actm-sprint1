@@ -1,92 +1,77 @@
-import React, { useState } from 'react';
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
-import { useGoogleAuth } from './contexts/GoogleAuthContext';
-import { Container, LinearProgress } from '@mui/material';
+import React, { useState } from "react";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { useGoogleAuth } from "./contexts/GoogleAuthContext";
+import { Container, LinearProgress } from "@mui/material";
 
-import AdminWebinars from './containers/adminWebinars';
-import AdminEvents from './containers/adminEvents';
-import AdminProjects from './containers/adminProjects';
-import UserDashboard from './containers/userDashboard';
-import CssAnimations from './utils/animations';
-import Header from './components/Header';
+import AdminWebinars from "./containers/adminWebinars";
+import AdminEvents from "./containers/adminEvents";
+import AdminProjects from "./containers/adminProjects";
+import UserDashboard from "./containers/userDashboard";
+import CssAnimations from "./utils/animations";
+import Header from "./components/Header";
 
-const AdminDashboard = React.lazy(() => import('./containers/adminDashboard'));
-const AdminHeader = React.lazy(() => import('./containers/adminHeader'));
-const Home = React.lazy(() => import('./containers/home'));
-const Story = React.lazy(() => import('./containers/about'));
-const Events = React.lazy(() => import('./containers/events'));
-const Webinars = React.lazy(() => import('./containers/webinars'));
-const Projects = React.lazy(() => import('./containers/projects'));
-const Offers = React.lazy(() => import('./containers/offers'));
-const Mission = React.lazy(() => import('./containers/mission'));
-const ComingSoon = React.lazy(() => import('./containers/ComingSoon'));
+const AdminDashboard = React.lazy(() => import("./containers/adminDashboard"));
+const AdminHeader = React.lazy(() => import("./containers/adminHeader"));
+const Home = React.lazy(() => import("./containers/home"));
+const Story = React.lazy(() => import("./containers/about"));
+const Events = React.lazy(() => import("./containers/events"));
+const Webinars = React.lazy(() => import("./containers/webinars"));
+const Projects = React.lazy(() => import("./containers/projects"));
+const Offers = React.lazy(() => import("./containers/offers"));
+const Mission = React.lazy(() => import("./containers/mission"));
 
 export const SuspenseLoader = () => {
   return (
-    <div className='suspenseLoader'>
-      <LinearProgress sx={{ height: '8px' }} color='primary' />
+    <div className="suspenseLoader">
+      <LinearProgress sx={{ height: "8px" }} color="primary" />
     </div>
   );
 };
 
-export const AdminMails = [
-  'vasanthvdev@gmail.com',
-  'vasanthnaveen2011@gmail.com',
-  'rajkumardhandapani03@gmail.com',
-  'theashvathpillai1911@gmail.com',
-  'rrwalwaikar@gmail.com',
-  'theactm.org@gmail.com',
-];
+export const AdminMails = ["vasanthvdev@gmail.com", "vasanthnaveen2011@gmail.com", "rajkumardhandapani03@gmail.com", "theashvathpillai1911@gmail.com", "rrwalwaikar@gmail.com", "theactm.org@gmail.com"];
 export const PrivateRoute = ({ children, userType }) => {
   const { currentUser, googleSignOut } = useGoogleAuth();
   const [adminEmails] = useState(AdminMails);
-  if (userType === 'admin') {
-    return currentUser && adminEmails.includes(currentUser.email)
-      ? children
-      : googleSignOut() && <Navigate to='/' />;
+  if (userType === "admin") {
+    return currentUser && adminEmails.includes(currentUser.email) ? children : googleSignOut() && <Navigate to="/" />;
   } else {
-    return currentUser && !adminEmails.includes(currentUser.email)
-      ? children
-      : googleSignOut() && <Navigate to='/' />;
+    return currentUser && !adminEmails.includes(currentUser.email) ? children : googleSignOut() && <Navigate to="/" />;
   }
 };
 
 function App() {
-  window.addEventListener(
-    'mousemove',
-    CssAnimations.customCursorOnMOuseMoveMethod
-  );
+  window.addEventListener("mousemove", CssAnimations.customCursorOnMOuseMoveMethod);
   const { pathname } = useLocation();
-  const isStatic = !pathname.includes('admin') && !pathname.includes('user');
+  const isStatic = !pathname.includes("admin") && !pathname.includes("user");
+  console.clear();
 
   return (
     <React.Suspense fallback={<SuspenseLoader />}>
       <article>
         {isStatic && (
           <>
-            <span className='cursor' />
-            <span className='cursor2' />
+            <span className="cursor" />
+            <span className="cursor2" />
           </>
         )}
         <Routes>
           <Route
-            path='/'
+            path="/"
             element={
               <>
                 <Header />
-                <Home id={'home'} />
-                <Story id={'about'} />
-                <Events id={'events'} />
-                <Webinars id={'webinars'} />
-                <Projects id={'projects'} />
-                <Offers id={'offers'} />
-                <Mission id={'missions'} />
+                <Home id={"home"} />
+                <Story id={"about"} />
+                <Events id={"events"} />
+                <Webinars id={"webinars"} />
+                <Projects id={"projects"} />
+                <Offers id={"offers"} />
+                <Mission id={"missions"} />
               </>
             }
           />
-          <Route path='/userregistration' element={<ComingSoon />} />
           <Route
-            path='/admin/*'
+            path="/admin/*"
             element={
               <Container disableGutters>
                 <AdminHeader>
@@ -94,21 +79,21 @@ function App() {
                     <Route
                       index
                       element={
-                        <PrivateRoute userType='admin'>
+                        <PrivateRoute userType="admin">
                           <AdminDashboard />
                         </PrivateRoute>
                       }
                     />
-                    <Route path='/webinars' element={<AdminWebinars />} />
-                    <Route path='/events' element={<AdminEvents />} />
-                    <Route path='/projects' element={<AdminProjects />} />
+                    <Route path="/webinars" element={<AdminWebinars />} />
+                    <Route path="/events" element={<AdminEvents />} />
+                    <Route path="/projects" element={<AdminProjects />} />
                   </Routes>
                 </AdminHeader>
               </Container>
             }
           />
           <Route
-            path='/user/*'
+            path="/user/*"
             element={
               <Container disableGutters>
                 <AdminHeader>
@@ -116,7 +101,7 @@ function App() {
                     <Route
                       index
                       element={
-                        <PrivateRoute userType='user'>
+                        <PrivateRoute userType="user">
                           <UserDashboard />
                         </PrivateRoute>
                       }
