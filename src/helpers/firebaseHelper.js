@@ -26,9 +26,10 @@ export const deleteArrayItem = async (table, uid, arrayName, arrayItem) => {
 
 export const getFileURL = async (file, folder) => {
   if (!file) return;
+  const date = new Date();
   try {
     const uniqueID = Date.now() + Math.floor(Math.random()).toString();
-    const fileRef = ref(storageBucket, `/${folder}/${uniqueID}${file.name}`);
+    const fileRef = ref(storageBucket, `/${folder}/${uniqueID}${file.name}-${date.toISOString()}-${Math.random()}`);
     await uploadBytes(fileRef, file);
     return await getDownloadURL(fileRef);
   } catch (err) {
