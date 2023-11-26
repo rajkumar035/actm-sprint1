@@ -1,5 +1,6 @@
 {
-  "name": "actm-sprint1",
+  "name": "the-actm",
+  "description": "The change agents, innovators of tomorrow in the realm of health care. Our purpose is to mentor and inspire the next generation of medical pioneers, by equipping them with the essential resources, knowledge, and networks to shape a healthier world. As a collective of like-minded individuals, our shared aspiration is to weave together dispersed communities of medical students, doctors, and healthcare professionals worldwide, fostering a tapestry of collaboration for a brighter healthcare future",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

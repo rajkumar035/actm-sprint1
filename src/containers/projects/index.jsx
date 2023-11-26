@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./index.css";
 import Grid from "@mui/material/Grid";
 import AppPagination from "../../components/Pagination";
-import nodata from "../../assets/images/nodata.jpg";
+import nodata from "../../assets/images/nodata.webp";
 import { getData } from "../../helpers/firebaseHelper";
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 

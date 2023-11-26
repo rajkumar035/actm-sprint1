@@ -4,7 +4,7 @@ import close from "../../assets/svg/close.svg";
 import menu from "../../assets/svg/menu.svg";
 import { useGoogleAuth } from "../../contexts/GoogleAuthContext";
 import { useNavigate } from "react-router-dom";
-const logo = require("../../assets/images/logo.png");
+const logo = require("../../assets/images/logo.webp");
 
 const Header = () => {
   const navigate = useNavigate();

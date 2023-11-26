@@ -2,7 +2,7 @@ import React from "react";
 import "./index.css";
 import instagram from "../../assets/svg/insta.svg";
 import linkedIn from "../../assets/svg/linkedin.svg";
-import homebg from "../../assets/images/homebg.png";
+import homebg from "../../assets/images/homebg.webp";
 
 const Home = ({ id }) => {
   return (

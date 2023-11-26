@@ -5,7 +5,7 @@ import locationico from "../../assets/svg/location.svg";
 import timeico from "../../assets/svg/time.svg";
 import dateico from "../../assets/svg/date.svg";
 import AppPagination from "../../components/Pagination";
-import nodata from "../../assets/images/nodata.jpg";
+import nodata from "../../assets/images/nodata.webp";
 import { getData } from "../../helpers/firebaseHelper";
 import { useMediaQuery, useTheme } from "@mui/material";
 

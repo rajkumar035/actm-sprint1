@@ -5,7 +5,7 @@ import speakerico from "../../assets/svg/speaker.svg";
 import timeico from "../../assets/svg/timeblack.svg";
 import dateico from "../../assets/svg/dateblack.svg";
 import AppPagination from "../../components/Pagination";
-import nodata from "../../assets/images/nodata.jpg";
+import nodata from "../../assets/images/nodata.webp";
 import { getData } from "../../helpers/firebaseHelper";
 import { useMediaQuery, useTheme } from "@mui/material";
 

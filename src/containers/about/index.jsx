@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./index.css";
-import StoryPic from "../../assets/images/storypic.jpeg";
+import StoryPic from "../../assets/images/storypicbanner.webp";
 import CssAnimations from "../../utils/animations";
 
 const Story = ({ id }) => {

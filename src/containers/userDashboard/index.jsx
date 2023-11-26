@@ -1,5 +1,5 @@
 import React from "react";
-import comingsoon from "../../assets/images/coming.jpg";
+import comingsoon from "../../assets/images/coming.webp";
 import "./index.css";
 
 const UserDashboard = () => {
